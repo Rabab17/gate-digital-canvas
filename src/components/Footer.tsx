@@ -1,16 +1,20 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t, language } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 ${language === 'ar' ? 'text-right' : ''}`}>
           <div>
-            <h3 className="text-xl font-bold mb-4">E-Business Gate</h3>
-            <p className="mb-4 text-gray-400">
-              Empowering businesses through digital innovation since 2010. We provide
-              comprehensive digital solutions to help your business thrive in the online world.
+            <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              E-Business Gate
+            </h3>
+            <p className={`mb-4 text-gray-400 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
+              {t('footer.description')}
             </p>
-            <div className="flex space-x-4">
+            <div className={`flex space-x-4 ${language === 'ar' ? 'justify-end space-x-reverse' : ''}`}>
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors"
@@ -51,59 +55,77 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Services</h3>
-            <ul className="space-y-2 text-gray-400">
+            <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('footer.services')}
+            </h3>
+            <ul className={`space-y-2 text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Digital Marketing</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.digitalMarketing.title')}
+                </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">SEO Services</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.seo.title')}
+                </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Web Design & Development</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.webDevelopment.title')}
+                </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Mobile App Development</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.mobileApp.title')}
+                </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Branding & Visual Identity</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.branding.title')}
+                </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">ERP & Cloud Solutions</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="#home" className="hover:text-white transition-colors">Home</a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-white transition-colors">About Us</a>
-              </li>
-              <li>
-                <a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a>
-              </li>
-              <li>
-                <a href="#clients" className="hover:text-white transition-colors">Clients</a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {t('services.erp.title')}
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact</h3>
-            <ul className="space-y-4 text-gray-400">
-              <li className="flex items-start">
+            <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('footer.quickLinks')}
+            </h3>
+            <ul className={`space-y-2 text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              <li>
+                <a href="#home" className="hover:text-white transition-colors">{t('nav.home')}</a>
+              </li>
+              <li>
+                <a href="#about" className="hover:text-white transition-colors">{t('nav.about')}</a>
+              </li>
+              <li>
+                <a href="#portfolio" className="hover:text-white transition-colors">{t('nav.portfolio')}</a>
+              </li>
+              <li>
+                <a href="#clients" className="hover:text-white transition-colors">{t('nav.clients')}</a>
+              </li>
+              <li>
+                <a href="#testimonials" className="hover:text-white transition-colors">{t('nav.testimonials')}</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-white transition-colors">{t('nav.contact')}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('footer.contact')}
+            </h3>
+            <ul className={`space-y-4 text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <svg
-                  className="w-5 h-5 mr-2 mt-1"
+                  className={`w-5 h-5 mt-1 ${language === 'ar' ? 'ml-2' : 'mr-2'}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -127,9 +149,9 @@ export default function Footer() {
                   <p>UAE (Dubai)</p>
                 </div>
               </li>
-              <li className="flex items-center">
+              <li className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className={`w-5 h-5 ${language === 'ar' ? 'ml-2' : 'mr-2'}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -145,9 +167,9 @@ export default function Footer() {
                   info@e-businessgate.net
                 </a>
               </li>
-              <li className="flex items-center">
+              <li className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className={`w-5 h-5 ${language === 'ar' ? 'ml-2' : 'mr-2'}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -168,19 +190,19 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} E-Business Gate. All rights reserved.
+          <div className={`flex flex-col md:flex-row justify-between items-center ${language === 'ar' ? 'md:flex-row-reverse' : ''}`}>
+            <p className={`text-gray-500 text-sm mb-4 md:mb-0 ${language === 'ar' ? 'font-arabic' : ''}`}>
+              &copy; {new Date().getFullYear()} E-Business Gate. {t('footer.allRightsReserved')}
             </p>
-            <div className="flex space-x-6 text-sm text-gray-500">
+            <div className={`flex space-x-6 text-sm text-gray-500 ${language === 'ar' ? 'space-x-reverse font-arabic' : ''}`}>
               <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </a>
               <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
+                {t('footer.termsOfService')}
               </a>
               <a href="#" className="hover:text-white transition-colors">
-                Sitemap
+                {t('footer.sitemap')}
               </a>
             </div>
           </div>

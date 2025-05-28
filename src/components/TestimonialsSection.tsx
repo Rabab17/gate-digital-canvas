@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Testimonial {
   id: number;
@@ -11,6 +12,8 @@ interface Testimonial {
 }
 
 export default function TestimonialsSection() {
+  const { t, language } = useLanguage();
+
   const testimonials: Testimonial[] = [
     {
       id: 1,
@@ -81,7 +84,9 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="section-padding bg-gradient-to-r from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5">
       <div className="container mx-auto px-4">
-        <h2 className="section-title mb-12">What Our Clients Say</h2>
+        <h2 className={`section-title mb-12 ${language === 'ar' ? 'font-arabic' : ''}`}>
+          {t('testimonials.title')}
+        </h2>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Testimonial Slider */}
@@ -99,7 +104,7 @@ export default function TestimonialsSection() {
                     <div className="flex flex-col items-center">
                       <div className="relative mb-6">
                         <div className="absolute -top-4 -left-4 w-10 h-10 text-5xl text-primary opacity-50">"</div>
-                        <p className="text-lg md:text-xl italic text-center relative z-10">
+                        <p className={`text-lg md:text-xl italic text-center relative z-10 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
                           {testimonial.quote}
                         </p>
                         <div className="absolute -bottom-4 -right-4 w-10 h-10 text-5xl text-primary opacity-50 rotate-180">"</div>
@@ -113,8 +118,10 @@ export default function TestimonialsSection() {
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <h4 className={`font-bold text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
+                          {testimonial.name}
+                        </h4>
+                        <p className={`text-sm text-gray-600 dark:text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
                           {testimonial.position}, {testimonial.company}
                         </p>
                       </div>

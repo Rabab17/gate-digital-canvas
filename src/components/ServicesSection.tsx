@@ -1,7 +1,11 @@
+
 import { Button } from "@/components/ui/button";
 import ServiceItem from "./ServiceItem";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ServicesSection() {
+  const { t, language } = useLanguage();
+
   const services = [
     {
       icon: (
@@ -20,9 +24,8 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "Digital Marketing",
-      description:
-        "Strategic campaigns that increase visibility, drive engagement, and convert leads across multiple platforms.",
+      title: t('services.digitalMarketing.title'),
+      description: t('services.digitalMarketing.description'),
     },
     {
       icon: (
@@ -41,9 +44,8 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "SEO Services",
-      description:
-        "Data-driven optimization to improve organic rankings, drive targeted traffic, and achieve long-term growth.",
+      title: t('services.seo.title'),
+      description: t('services.seo.description'),
     },
     {
       icon: (
@@ -62,9 +64,8 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "Web Design & Development",
-      description:
-        "Custom websites that blend stunning design with powerful functionality to deliver exceptional user experiences.",
+      title: t('services.webDevelopment.title'),
+      description: t('services.webDevelopment.description'),
     },
     {
       icon: (
@@ -83,9 +84,8 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "Mobile App Development",
-      description:
-        "Innovative native and cross-platform mobile applications built to enhance engagement and streamline processes.",
+      title: t('services.mobileApp.title'),
+      description: t('services.mobileApp.description'),
     },
     {
       icon: (
@@ -104,9 +104,8 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "Branding & Visual Identity",
-      description:
-        "Comprehensive branding solutions that establish a strong market presence and foster lasting customer connections.",
+      title: t('services.branding.title'),
+      description: t('services.branding.description'),
     },
     {
       icon: (
@@ -125,16 +124,17 @@ export default function ServicesSection() {
           />
         </svg>
       ),
-      title: "ERP & Cloud Solutions",
-      description:
-        "Scalable enterprise solutions and cloud services that modernize operations and enhance business efficiency.",
+      title: t('services.erp.title'),
+      description: t('services.erp.description'),
     },
   ];
 
   return (
     <section id="services" className="section-padding">
       <div className="container mx-auto px-4">
-        <h2 className="section-title mb-12">Our Services</h2>
+        <h2 className={`section-title mb-12 ${language === 'ar' ? 'font-arabic' : ''}`}>
+          {t('services.title')}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div key={index} className="animate-stagger">
@@ -147,7 +147,9 @@ export default function ServicesSection() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button className="btn-primary shimmer-button">Explore All Services</Button>
+          <Button className={`btn-primary shimmer-button ${language === 'ar' ? 'font-arabic' : ''}`}>
+            {t('services.exploreAll')}
+          </Button>
         </div>
       </div>
     </section>

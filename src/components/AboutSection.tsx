@@ -1,11 +1,16 @@
 
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function AboutSection() {
+  const { t, language } = useLanguage();
+
   return (
     <section id="about" className="section-padding bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="section-title mb-12">About Us</h2>
+        <h2 className={`section-title mb-12 ${language === 'ar' ? 'font-arabic' : ''}`}>
+          {t('about.title')}
+        </h2>
         <div className="flex flex-col lg:flex-row gap-10 items-center">
           <div className="lg:w-1/2">
             <div className="relative">
@@ -21,42 +26,54 @@ export default function AboutSection() {
             </div>
           </div>
           
-          <div className="lg:w-1/2">
-            <h3 className="text-2xl font-bold mb-4 text-primary">Our Vision</h3>
-            <p className="mb-6">
-              At E-Business Gate, we envision a world where businesses of all sizes can harness the full potential of digital 
-              technologies. We're committed to delivering innovative, scalable, and impactful digital solutions that drive 
-              growth and transformation.
+          <div className={`lg:w-1/2 ${language === 'ar' ? 'text-right' : ''}`}>
+            <h3 className={`text-2xl font-bold mb-4 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('about.vision.title')}
+            </h3>
+            <p className={`mb-6 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
+              {t('about.vision.description')}
             </p>
             
-            <h3 className="text-2xl font-bold mb-4 text-primary">Our Mission</h3>
-            <p className="mb-6">
-              We empower businesses through cutting-edge digital innovation, expert guidance, and tailored strategies
-              that yield measurable results. Our collaborative approach ensures that we understand your unique challenges 
-              and deliver solutions that exceed expectations.
+            <h3 className={`text-2xl font-bold mb-4 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('about.mission.title')}
+            </h3>
+            <p className={`mb-6 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
+              {t('about.mission.description')}
             </p>
             
-            <h3 className="text-2xl font-bold mb-4 text-primary">Our Values</h3>
+            <h3 className={`text-2xl font-bold mb-4 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('about.values.title')}
+            </h3>
             <ul className="mb-8 space-y-2">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">✓</span>
-                <span><strong>Excellence</strong> - We strive for the highest quality in everything we do</span>
+              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
+                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
+                  {t('about.values.excellence')}
+                </span>
               </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">✓</span>
-                <span><strong>Innovation</strong> - We embrace new technologies and creative solutions</span>
+              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
+                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
+                  {t('about.values.innovation')}
+                </span>
               </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">✓</span>
-                <span><strong>Integrity</strong> - We build relationships based on trust and transparency</span>
+              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
+                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
+                  {t('about.values.integrity')}
+                </span>
               </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">✓</span>
-                <span><strong>Collaboration</strong> - We work as partners with our clients to achieve shared goals</span>
+              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
+                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
+                  {t('about.values.collaboration')}
+                </span>
               </li>
             </ul>
             
-            <Button className="btn-primary">Learn More About Us</Button>
+            <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('about.learnMore')}
+            </Button>
           </div>
         </div>
       </div>
