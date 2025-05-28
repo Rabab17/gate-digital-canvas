@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import ServiceItem from "./ServiceItem";
 
@@ -138,16 +137,17 @@ export default function ServicesSection() {
         <h2 className="section-title mb-12">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceItem
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-            />
+            <div key={index} className="animate-stagger">
+              <ServiceItem
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+              />
+            </div>
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button className="btn-primary">Explore All Services</Button>
+          <Button className="btn-primary shimmer-button">Explore All Services</Button>
         </div>
       </div>
     </section>

@@ -11,6 +11,8 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import AnimationEffect from "@/components/AnimationEffect";
+import LoadingScreen from "@/components/LoadingScreen";
+import MouseTracker from "@/components/MouseTracker";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Index = () => {
@@ -20,10 +22,27 @@ const Index = () => {
     
     // Add smooth scrolling to the document
     document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Add parallax effect on scroll
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.parallax');
+      
+      parallaxElements.forEach((element) => {
+        const speed = 0.5;
+        const yPos = -(scrolled * speed);
+        (element as HTMLElement).style.transform = `translateY(${yPos}px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <LanguageProvider>
+      <LoadingScreen />
+      <MouseTracker />
       <div className="bg-white dark:bg-gray-950 min-h-screen transition-all duration-300">
         <Header />
         <HeroSection />
@@ -32,7 +51,7 @@ const Index = () => {
           <AboutSection />
         </AnimationEffect>
         
-        <AnimationEffect animationType="fadeIn" delay={200}>
+        <AnimationEffect animationType="stagger" delay={200}>
           <ServicesSection />
         </AnimationEffect>
         

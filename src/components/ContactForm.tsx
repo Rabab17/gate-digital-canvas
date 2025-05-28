@@ -42,7 +42,7 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full"
+          className="w-full focus-effect border-2 focus:border-primary"
         />
       </div>
       <div>
@@ -53,7 +53,7 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full"
+          className="w-full focus-effect border-2 focus:border-primary"
         />
       </div>
       <div>
@@ -63,12 +63,12 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full min-h-[150px]"
+          className="w-full min-h-[150px] focus-effect border-2 focus:border-primary"
         />
       </div>
       <Button
         type="submit"
-        className="w-full bg-primary hover:bg-blue-600"
+        className="w-full shimmer-button bg-primary hover:bg-blue-600 gpu-accelerated"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Sending..." : "Send Message"}

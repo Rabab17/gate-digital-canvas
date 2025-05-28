@@ -7,8 +7,8 @@ interface ServiceItemProps {
 
 export default function ServiceItem({ icon, title, description }: ServiceItemProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md card-hover">
-      <div className="w-16 h-16 mb-4 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+    <div className="shimmer-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md card-hover hover-glow hover-lift gpu-accelerated">
+      <div className="w-16 h-16 mb-4 text-primary flex items-center justify-center bg-primary/10 rounded-lg pulse-icon">
         {icon}
       </div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
