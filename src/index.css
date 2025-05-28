@@ -73,11 +73,25 @@
   }
 
   body {
-    @apply bg-background text-foreground font-opensans;
+    @apply bg-background text-foreground font-opensans transition-all duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-poppins font-bold;
+  }
+
+  /* Arabic font support */
+  .font-arabic {
+    font-family: 'Cairo', 'Amiri', sans-serif;
+  }
+
+  /* RTL support */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="rtl"] .flex {
+    flex-direction: row-reverse;
   }
 
   .section-padding {
@@ -98,22 +112,132 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-blue-600 transition-colors;
+    @apply px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-300 hover:scale-105;
   }
 
   .btn-accent {
-    @apply px-6 py-3 bg-accent text-gray-800 font-semibold rounded-md hover:bg-yellow-500 transition-colors;
+    @apply px-6 py-3 bg-accent text-gray-800 font-semibold rounded-md hover:bg-yellow-500 transition-all duration-300 hover:scale-105;
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:scale-105;
   }
 
+  /* Enhanced animations */
   .animate-on-scroll {
-    @apply opacity-0 translate-y-8 transition-all duration-700;
+    @apply transition-all duration-700 ease-out;
   }
 
   .animate-on-scroll.animated {
+    @apply opacity-100 translate-y-0 translate-x-0 scale-100;
+  }
+
+  .animate-fadeIn.animated {
     @apply opacity-100 translate-y-0;
+  }
+
+  .animate-slideUp.animated {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .animate-slideLeft.animated {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .animate-slideRight.animated {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .animate-scale.animated {
+    @apply opacity-100 scale-100;
+  }
+
+  .animate-flipIn.animated {
+    @apply opacity-100;
+    transform: rotateY(0deg);
+  }
+
+  /* Custom keyframe animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slow-zoom {
+    0%, 100% {
+      transform: scale(1.05);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slow-zoom {
+    animation: slow-zoom 20s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float ease-in-out infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  /* Smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Enhanced hover effects */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(31, 117, 254, 0.3);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Loading animations */
+  .loading-pulse {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
 }

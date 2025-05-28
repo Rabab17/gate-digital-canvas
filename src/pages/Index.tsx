@@ -11,45 +11,51 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import AnimationEffect from "@/components/AnimationEffect";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Index = () => {
   useEffect(() => {
     // Scroll to top when the page loads
     window.scrollTo(0, 0);
+    
+    // Add smooth scrolling to the document
+    document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-950 min-h-screen">
-      <Header />
-      <HeroSection />
-      
-      <AnimationEffect>
-        <AboutSection />
-      </AnimationEffect>
-      
-      <AnimationEffect>
-        <ServicesSection />
-      </AnimationEffect>
-      
-      <AnimationEffect>
-        <ClientsSection />
-      </AnimationEffect>
-      
-      <AnimationEffect>
-        <PortfolioSection />
-      </AnimationEffect>
-      
-      <AnimationEffect>
-        <TestimonialsSection />
-      </AnimationEffect>
-      
-      <AnimationEffect>
-        <ContactSection />
-      </AnimationEffect>
-      
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <LanguageProvider>
+      <div className="bg-white dark:bg-gray-950 min-h-screen transition-all duration-300">
+        <Header />
+        <HeroSection />
+        
+        <AnimationEffect animationType="slideUp" delay={100}>
+          <AboutSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="fadeIn" delay={200}>
+          <ServicesSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="slideLeft" delay={100}>
+          <ClientsSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="scale" delay={150}>
+          <PortfolioSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="slideRight" delay={100}>
+          <TestimonialsSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="slideUp" delay={200}>
+          <ContactSection />
+        </AnimationEffect>
+        
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </LanguageProvider>
   );
 };
 
