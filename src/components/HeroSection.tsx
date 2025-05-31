@@ -200,7 +200,7 @@ export default function HeroSection() {
         </div>
 
         {/* Enhanced scroll indicator with bounce */}
-       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+       <div className="absolute bottom-11 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
   <div className="pulse-icon cursor-pointer pt-6" onClick={scrollToServices}>
     <div className="w-12 h-12 rounded-full border-2 border-accent flex items-center justify-center bg-white/10 backdrop-blur-sm hover:bg-accent hover:text-gray-900 transition-all duration-300">
       <svg

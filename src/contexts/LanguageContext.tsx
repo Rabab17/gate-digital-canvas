@@ -236,6 +236,7 @@ const translations = {
     'contact.phone': 'الهاتف',
   
     ///
+    'contact.form.name': 'الاسم ',
 'contact.form.email': 'البريد الإلكتروني',
 'contact.form.message': 'رسالتك',
 'contact.form.send': 'إرسال الرسالة',
