@@ -200,26 +200,27 @@ export default function HeroSection() {
         </div>
 
         {/* Enhanced scroll indicator with bounce */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-          <div className="pulse-icon cursor-pointer" onClick={scrollToServices}>
-            <div className="w-12 h-12 rounded-full border-2 border-accent flex items-center justify-center bg-white/10 backdrop-blur-sm hover:bg-accent hover:text-gray-900 transition-all duration-300">
-              <svg
-                className="w-6 h-6 animate-pulse"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+  <div className="pulse-icon cursor-pointer pt-6" onClick={scrollToServices}>
+    <div className="w-12 h-12 rounded-full border-2 border-accent flex items-center justify-center bg-white/10 backdrop-blur-sm hover:bg-accent hover:text-gray-900 transition-all duration-300">
+      <svg
+        className="w-6 h-6 animate-pulse"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );

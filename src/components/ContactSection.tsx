@@ -33,6 +33,7 @@ export default function ContactSection() {
                     <p className="font-medium">{t('contact.uae')}</p>
                     <p>{t('contact.dubai')}</p>
                   </div>
+                  
                 </div>
               </div>
 
