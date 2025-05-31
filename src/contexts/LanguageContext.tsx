@@ -22,8 +22,8 @@ const translations = {
     'nav.contact': 'Contact',
     
     // Hero Section
-    'hero.title': 'Empowering Businesses through Digital Innovation',
-    'hero.subtitle': 'Marketing, Development, Branding & Transformation',
+    'hero.title': 'E-Business Gate - Empowering Businesses through Digital Innovation',
+    'hero.subtitle': 'Marketing, Development, Branding & Digital Transformation Solutions',
     'hero.cta': 'Start Your Journey',
     
     // About Section
@@ -111,8 +111,8 @@ const translations = {
     'nav.contact': 'اتصل بنا',
     
     // Hero Section
-    'hero.title': 'تمكين الشركات من خلال الابتكار الرقمي',
-    'hero.subtitle': 'التسويق والتطوير والعلامة التجارية والتحول الرقمي',
+    'hero.title': 'بوابة الاعمال الالكترونية - تمكين الشركات من خلال الابتكار الرقمي',
+    'hero.subtitle': 'التسويق والتطوير والعلامة التجارية وحلول التحول الرقمي',
     'hero.cta': 'ابدأ رحلتك',
     
     // About Section

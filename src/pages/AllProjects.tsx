@@ -3,405 +3,384 @@ import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimationEffect from "@/components/AnimationEffect";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Calendar, Users, Award } from "lucide-react";
 
-interface Project {
-  id: number;
-  title: string;
-  titleAr: string;
-  category: string;
-  categoryAr: string;
-  industry: string;
-  industryAr: string;
-  image: string;
-  description: string;
-  descriptionAr: string;
-  technologies: string[];
-  year: string;
-  client: string;
-  clientAr: string;
-  link?: string;
-  achievements: string[];
-  achievementsAr: string[];
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "E-commerce Fashion Platform",
-    titleAr: "منصة التجارة الإلكترونية للأزياء",
-    category: "E-commerce",
-    categoryAr: "التجارة الإلكترونية",
-    industry: "Fashion",
-    industryAr: "الأزياء",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "A comprehensive e-commerce platform with advanced filtering, payment integration, and inventory management.",
-    descriptionAr: "منصة تجارة إلكترونية شاملة مع فلترة متقدمة وتكامل الدفع وإدارة المخزون.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    year: "2024",
-    client: "Style Boutique",
-    clientAr: "بوتيك الأناقة",
-    link: "#",
-    achievements: ["50% increase in sales", "Reduced cart abandonment by 30%", "Mobile-first design"],
-    achievementsAr: ["زيادة المبيعات بنسبة 50%", "تقليل هجر السلة بنسبة 30%", "تصميم الهاتف أولاً"]
-  },
-  {
-    id: 2,
-    title: "Healthcare Management System",
-    titleAr: "نظام إدارة الرعاية الصحية",
-    category: "Web Development",
-    categoryAr: "تطوير الويب",
-    industry: "Healthcare",
-    industryAr: "الرعاية الصحية",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Comprehensive patient management system with appointment scheduling and medical records.",
-    descriptionAr: "نظام شامل لإدارة المرضى مع جدولة المواعيد والسجلات الطبية.",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Socket.io"],
-    year: "2024",
-    client: "HealthCare Plus",
-    clientAr: "هيلث كير بلس",
-    link: "#",
-    achievements: ["Improved efficiency by 40%", "HIPAA compliant", "Real-time notifications"],
-    achievementsAr: ["تحسين الكفاءة بنسبة 40%", "متوافق مع HIPAA", "إشعارات فورية"]
-  },
-  {
-    id: 3,
-    title: "Food Delivery Mobile App",
-    titleAr: "تطبيق توصيل الطعام المحمول",
-    category: "Mobile App",
-    categoryAr: "تطبيق محمول",
-    industry: "Food & Beverage",
-    industryAr: "الطعام والشراب",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Native mobile app for food delivery with real-time tracking and payment integration.",
-    descriptionAr: "تطبيق محمول أصلي لتوصيل الطعام مع تتبع فوري وتكامل الدفع.",
-    technologies: ["React Native", "Express.js", "PostgreSQL", "Firebase"],
-    year: "2023",
-    client: "Gourmet Delights",
-    clientAr: "لذائذ الذواقة",
-    link: "#",
-    achievements: ["10k+ downloads", "4.8-star rating", "30-minute delivery guarantee"],
-    achievementsAr: ["أكثر من 10 آلاف تحميل", "تقييم 4.8 نجوم", "ضمان التسليم خلال 30 دقيقة"]
-  },
-  {
-    id: 4,
-    title: "Educational Learning Platform",
-    titleAr: "منصة التعلم التعليمية",
-    category: "Web Development",
-    categoryAr: "تطوير الويب",
-    industry: "Education",
-    industryAr: "التعليم",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Interactive online learning platform with video courses, quizzes, and progress tracking.",
-    descriptionAr: "منصة تعلم تفاعلية عبر الإنترنت مع دورات فيديو واختبارات وتتبع التقدم.",
-    technologies: ["Angular", "Spring Boot", "MySQL", "AWS"],
-    year: "2023",
-    client: "Future Academy",
-    clientAr: "أكاديمية المستقبل",
-    link: "#",
-    achievements: ["5000+ active students", "95% completion rate", "Multi-language support"],
-    achievementsAr: ["أكثر من 5000 طالب نشط", "معدل إكمال 95%", "دعم متعدد اللغات"]
-  },
-  {
-    id: 5,
-    title: "Corporate Website Redesign",
-    titleAr: "إعادة تصميم موقع الشركة",
-    category: "Web Design",
-    categoryAr: "تصميم الويب",
-    industry: "Technology",
-    industryAr: "التكنولوجيا",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Modern, responsive corporate website with improved UX and SEO optimization.",
-    descriptionAr: "موقع شركة حديث ومتجاوب مع تحسين UX وتحسين محركات البحث.",
-    technologies: ["Next.js", "TailwindCSS", "Contentful", "Vercel"],
-    year: "2023",
-    client: "TechMart",
-    clientAr: "تك مارت",
-    link: "#",
-    achievements: ["300% increase in organic traffic", "Page load time under 2s", "Accessibility compliant"],
-    achievementsAr: ["زيادة حركة المرور العضوية بنسبة 300%", "وقت تحميل الصفحة أقل من ثانيتين", "متوافق مع إمكانية الوصول"]
-  },
-  {
-    id: 6,
-    title: "Fitness Tracking Mobile App",
-    titleAr: "تطبيق تتبع اللياقة البدنية",
-    category: "Mobile App",
-    categoryAr: "تطبيق محمول",
-    industry: "Health & Fitness",
-    industryAr: "الصحة واللياقة البدنية",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Comprehensive fitness app with workout tracking, nutrition plans, and social features.",
-    descriptionAr: "تطبيق لياقة شامل مع تتبع التمارين وخطط التغذية والميزات الاجتماعية.",
-    technologies: ["Flutter", "Node.js", "MongoDB", "Firebase"],
-    year: "2024",
-    client: "FitLife",
-    clientAr: "فيت لايف",
-    link: "#",
-    achievements: ["50k+ active users", "4.7-star rating", "Featured on app stores"],
-    achievementsAr: ["أكثر من 50 ألف مستخدم نشط", "تقييم 4.7 نجوم", "مميز في متاجر التطبيقات"]
-  },
-  {
-    id: 7,
-    title: "Real Estate Portal",
-    titleAr: "بوابة العقارات",
-    category: "Web Development",
-    categoryAr: "تطوير الويب",
-    industry: "Real Estate",
-    industryAr: "العقارات",
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Advanced property listing platform with virtual tours and mortgage calculator.",
-    descriptionAr: "منصة متقدمة لإدراج العقارات مع جولات افتراضية وحاسبة الرهن العقاري.",
-    technologies: ["React", "Django", "PostgreSQL", "Mapbox"],
-    year: "2023",
-    client: "Prime Properties",
-    clientAr: "العقارات الراقية",
-    link: "#",
-    achievements: ["1000+ property listings", "Virtual tour integration", "Advanced search filters"],
-    achievementsAr: ["أكثر من 1000 إعلان عقاري", "تكامل الجولة الافتراضية", "مرشحات بحث متقدمة"]
-  },
-  {
-    id: 8,
-    title: "Inventory Management System",
-    titleAr: "نظام إدارة المخزون",
-    category: "Enterprise Software",
-    categoryAr: "برمجيات المؤسسات",
-    industry: "Retail",
-    industryAr: "التجارة",
-    image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    description: "Comprehensive inventory management with barcode scanning and automated reordering.",
-    descriptionAr: "إدارة مخزون شاملة مع مسح الباركود وإعادة الطلب التلقائي.",
-    technologies: ["Vue.js", "ASP.NET Core", "SQL Server", "Azure"],
-    year: "2024",
-    client: "Smart Retail",
-    clientAr: "التجارة الذكية",
-    link: "#",
-    achievements: ["Reduced stockouts by 80%", "Automated reporting", "Multi-location support"],
-    achievementsAr: ["تقليل نفاد المخزون بنسبة 80%", "التقارير التلقائية", "دعم المواقع المتعددة"]
-  }
-];
-
-const categories = [
-  { en: "All", ar: "الكل" },
-  { en: "E-commerce", ar: "التجارة الإلكترونية" },
-  { en: "Web Development", ar: "تطوير الويب" },
-  { en: "Mobile App", ar: "تطبيق محمول" },
-  { en: "Web Design", ar: "تصميم الويب" },
-  { en: "Enterprise Software", ar: "برمجيات المؤسسات" }
-];
-
-const industries = [
-  { en: "All", ar: "الكل" },
-  { en: "Fashion", ar: "الأزياء" },
-  { en: "Healthcare", ar: "الرعاية الصحية" },
-  { en: "Food & Beverage", ar: "الطعام والشراب" },
-  { en: "Education", ar: "التعليم" },
-  { en: "Technology", ar: "التكنولوجيا" },
-  { en: "Health & Fitness", ar: "الصحة واللياقة البدنية" },
-  { en: "Real Estate", ar: "العقارات" },
-  { en: "Retail", ar: "التجارة" }
-];
-
 export default function AllProjects() {
-  const { t, language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [activeIndustry, setActiveIndustry] = useState("All");
+  const { language } = useLanguage();
+  const [selectedServiceFilter, setSelectedServiceFilter] = useState('all');
+  const [selectedIndustryFilter, setSelectedIndustryFilter] = useState('all');
+
+  const serviceTypes = [
+    { id: 'all', name: language === 'ar' ? 'جميع الخدمات' : 'All Services' },
+    { id: 'ecommerce', name: language === 'ar' ? 'التجارة الإلكترونية' : 'E-commerce' },
+    { id: 'corporate', name: language === 'ar' ? 'مواقع الشركات' : 'Corporate' },
+    { id: 'mobile', name: language === 'ar' ? 'تطبيقات محمولة' : 'Mobile Apps' },
+    { id: 'branding', name: language === 'ar' ? 'هوية بصرية' : 'Branding' }
+  ];
+
+  const industries = [
+    { id: 'all', name: language === 'ar' ? 'جميع الصناعات' : 'All Industries' },
+    { id: 'healthcare', name: language === 'ar' ? 'الرعاية الصحية' : 'Healthcare' },
+    { id: 'education', name: language === 'ar' ? 'التعليم' : 'Education' },
+    { id: 'food', name: language === 'ar' ? 'الطعام والمشروبات' : 'Food & Beverage' },
+    { id: 'technology', name: language === 'ar' ? 'التكنولوجيا' : 'Technology' },
+    { id: 'fashion', name: language === 'ar' ? 'الأزياء' : 'Fashion' }
+  ];
+
+  const projects = [
+    {
+      id: 1,
+      title: language === 'ar' ? 'منصة التجارة الإلكترونية الطبية' : 'MedStore E-commerce Platform',
+      description: language === 'ar' ? 'متجر إلكتروني متكامل للمنتجات الطبية مع نظام إدارة متقدم' : 'Complete e-commerce platform for medical products with advanced management system',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
+      serviceType: 'ecommerce',
+      industry: 'healthcare',
+      client: 'MedCare Solutions',
+      completionDate: '2024-01-15',
+      teamSize: 8,
+      duration: language === 'ar' ? '6 أشهر' : '6 months',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      features: [
+        language === 'ar' ? 'نظام دفع متقدم' : 'Advanced payment system',
+        language === 'ar' ? 'إدارة المخزون' : 'Inventory management',
+        language === 'ar' ? 'تطبيق محمول' : 'Mobile app'
+      ],
+      results: {
+        sales: language === 'ar' ? '+250% في المبيعات' : '+250% in sales',
+        users: language === 'ar' ? '10,000+ مستخدم' : '10,000+ users',
+        satisfaction: language === 'ar' ? '98% رضا العملاء' : '98% customer satisfaction'
+      }
+    },
+    {
+      id: 2,
+      title: language === 'ar' ? 'منصة التعليم الذكية' : 'SmartLearn Educational Platform',
+      description: language === 'ar' ? 'منصة تعليمية تفاعلية مع نظام إدارة التعلم المتقدم' : 'Interactive educational platform with advanced learning management system',
+      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop',
+      serviceType: 'corporate',
+      industry: 'education',
+      client: 'Future Academy',
+      completionDate: '2023-11-20',
+      teamSize: 6,
+      duration: language === 'ar' ? '4 أشهر' : '4 months',
+      technologies: ['Vue.js', 'Laravel', 'PostgreSQL', 'WebRTC'],
+      features: [
+        language === 'ar' ? 'فصول افتراضية' : 'Virtual classrooms',
+        language === 'ar' ? 'تتبع التقدم' : 'Progress tracking',
+        language === 'ar' ? 'اختبارات تفاعلية' : 'Interactive quizzes'
+      ],
+      results: {
+        students: language === 'ar' ? '5,000+ طالب' : '5,000+ students',
+        completion: language === 'ar' ? '+85% معدل الإنجاز' : '+85% completion rate',
+        engagement: language === 'ar' ? '+60% مشاركة' : '+60% engagement'
+      }
+    },
+    {
+      id: 3,
+      title: language === 'ar' ? 'تطبيق توصيل الطعام' : 'FoodieExpress Delivery App',
+      description: language === 'ar' ? 'تطبيق توصيل طعام شامل مع تتبع مباشر ونظام دفع متكامل' : 'Comprehensive food delivery app with real-time tracking and integrated payment',
+      image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop',
+      serviceType: 'mobile',
+      industry: 'food',
+      client: 'Gourmet Delights',
+      completionDate: '2024-02-28',
+      teamSize: 10,
+      duration: language === 'ar' ? '8 أشهر' : '8 months',
+      technologies: ['React Native', 'Firebase', 'Google Maps', 'PayPal'],
+      features: [
+        language === 'ar' ? 'تتبع مباشر' : 'Real-time tracking',
+        language === 'ar' ? 'دفع متعدد الطرق' : 'Multiple payment methods',
+        language === 'ar' ? 'تقييم المطاعم' : 'Restaurant ratings'
+      ],
+      results: {
+        downloads: language === 'ar' ? '50,000+ تحميل' : '50,000+ downloads',
+        orders: language === 'ar' ? '25,000+ طلب' : '25,000+ orders',
+        rating: language === 'ar' ? '4.8/5 تقييم' : '4.8/5 rating'
+      }
+    },
+    {
+      id: 4,
+      title: language === 'ar' ? 'هوية بصرية لشركة التقنية' : 'TechCorp Brand Identity',
+      description: language === 'ar' ? 'تصميم هوية بصرية شاملة وموقع إلكتروني متطور' : 'Comprehensive brand identity design and advanced website',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
+      serviceType: 'branding',
+      industry: 'technology',
+      client: 'TechCorp Solutions',
+      completionDate: '2023-12-10',
+      teamSize: 5,
+      duration: language === 'ar' ? '3 أشهر' : '3 months',
+      technologies: ['Adobe Creative Suite', 'Figma', 'React', 'Tailwind CSS'],
+      features: [
+        language === 'ar' ? 'شعار متجاوب' : 'Responsive logo',
+        language === 'ar' ? 'دليل العلامة التجارية' : 'Brand guidelines',
+        language === 'ar' ? 'موقع تفاعلي' : 'Interactive website'
+      ],
+      results: {
+        recognition: language === 'ar' ? '+300% تميز العلامة' : '+300% brand recognition',
+        leads: language === 'ar' ? '+180% عملاء محتملين' : '+180% leads',
+        conversion: language === 'ar' ? '+120% تحويل' : '+120% conversion'
+      }
+    },
+    {
+      id: 5,
+      title: language === 'ar' ? 'متجر الأزياء الراقية' : 'LuxeFashion Online Store',
+      description: language === 'ar' ? 'متجر إلكتروني فاخر للأزياء مع تجربة تسوق استثنائية' : 'Luxury fashion e-store with exceptional shopping experience',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
+      serviceType: 'ecommerce',
+      industry: 'fashion',
+      client: 'Style Studio',
+      completionDate: '2024-03-15',
+      teamSize: 7,
+      duration: language === 'ar' ? '5 أشهر' : '5 months',
+      technologies: ['Shopify Plus', 'React', 'Node.js', 'Stripe'],
+      features: [
+        language === 'ar' ? 'كتالوج تفاعلي' : 'Interactive catalog',
+        language === 'ar' ? 'واقع معزز' : 'AR try-on',
+        language === 'ar' ? 'برنامج ولاء' : 'Loyalty program'
+      ],
+      results: {
+        revenue: language === 'ar' ? '+400% الإيرادات' : '+400% revenue',
+        customers: language === 'ar' ? '15,000+ عميل' : '15,000+ customers',
+        retention: language === 'ar' ? '92% معدل العودة' : '92% retention rate'
+      }
+    },
+    {
+      id: 6,
+      title: language === 'ar' ? 'تطبيق إدارة المستشفى' : 'Hospital Management App',
+      description: language === 'ar' ? 'نظام إدارة شامل للمستشفيات مع تطبيق محمول للمرضى' : 'Comprehensive hospital management system with patient mobile app',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
+      serviceType: 'mobile',
+      industry: 'healthcare',
+      client: 'HealthCare Plus',
+      completionDate: '2024-01-30',
+      teamSize: 12,
+      duration: language === 'ar' ? '10 أشهر' : '10 months',
+      technologies: ['Flutter', 'Django', 'PostgreSQL', 'AWS'],
+      features: [
+        language === 'ar' ? 'حجز المواعيد' : 'Appointment booking',
+        language === 'ar' ? 'السجلات الطبية' : 'Medical records',
+        language === 'ar' ? 'استشارات عن بعد' : 'Telemedicine'
+      ],
+      results: {
+        efficiency: language === 'ar' ? '+70% كفاءة' : '+70% efficiency',
+        patients: language === 'ar' ? '20,000+ مريض' : '20,000+ patients',
+        satisfaction: language === 'ar' ? '96% رضا' : '96% satisfaction'
+      }
+    }
+  ];
 
   const filteredProjects = projects.filter(project => {
-    const categoryMatch = activeCategory === "All" || project.category === activeCategory;
-    const industryMatch = activeIndustry === "All" || project.industry === activeIndustry;
-    return categoryMatch && industryMatch;
+    const serviceMatch = selectedServiceFilter === 'all' || project.serviceType === selectedServiceFilter;
+    const industryMatch = selectedIndustryFilter === 'all' || project.industry === selectedIndustryFilter;
+    return serviceMatch && industryMatch;
   });
 
   return (
     <div className="bg-white dark:bg-gray-950 min-h-screen">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className={`text-center max-w-4xl mx-auto ${language === 'ar' ? 'text-right' : ''}`}>
-            <h1 className={`text-4xl md:text-6xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-              {language === 'ar' ? 'جميع مشاريعنا' : 'All Our Projects'}
-            </h1>
-            <p className={`text-xl mb-8 text-gray-600 dark:text-gray-300 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
-              {language === 'ar'
-                ? 'استكشف معرض أعمالنا المتنوع عبر مختلف الصناعات والتقنيات'
-                : 'Explore our diverse portfolio of work across various industries and technologies'
-              }
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Filters */}
-      <section className="py-8 bg-white dark:bg-gray-900 sticky top-20 z-40">
-        <div className="container mx-auto px-4">
-          {/* Category Filter */}
-          <div className="mb-6">
-            <h3 className={`text-lg font-semibold mb-3 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
-              {language === 'ar' ? 'الفئة:' : 'Category:'}
-            </h3>
-            <div className={`flex flex-wrap gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              {categories.map((category) => (
-                <button
-                  key={category.en}
-                  onClick={() => setActiveCategory(category.en)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeCategory === category.en
-                      ? "bg-primary text-white shadow-lg"
-                      : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-                  } ${language === 'ar' ? 'font-arabic' : ''}`}
-                >
-                  {language === 'ar' ? category.ar : category.en}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Industry Filter */}
-          <div>
-            <h3 className={`text-lg font-semibold mb-3 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
-              {language === 'ar' ? 'الصناعة:' : 'Industry:'}
-            </h3>
-            <div className={`flex flex-wrap gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              {industries.map((industry) => (
-                <button
-                  key={industry.en}
-                  onClick={() => setActiveIndustry(industry.en)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeIndustry === industry.en
-                      ? "bg-accent text-gray-800 shadow-lg"
-                      : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-                  } ${language === 'ar' ? 'font-arabic' : ''}`}
-                >
-                  {language === 'ar' ? industry.ar : industry.en}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="relative group">
-                  <img
-                    src={project.image}
-                    alt={language === 'ar' ? project.titleAr : project.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        className="flex items-center gap-2 text-white hover:text-accent transition-colors"
-                      >
-                        <ExternalLink size={20} />
-                        <span className={language === 'ar' ? 'font-arabic' : ''}>
-                          {language === 'ar' ? 'عرض المشروع' : 'View Project'}
-                        </span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <div className={`p-6 ${language === 'ar' ? 'text-right' : ''}`}>
-                  <div className={`flex items-center gap-4 mb-3 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <span className={`px-3 py-1 bg-primary/10 text-primary text-sm rounded-full ${language === 'ar' ? 'font-arabic' : ''}`}>
-                      {language === 'ar' ? project.categoryAr : project.category}
-                    </span>
-                    <span className={`px-3 py-1 bg-accent/10 text-accent text-sm rounded-full ${language === 'ar' ? 'font-arabic' : ''}`}>
-                      {language === 'ar' ? project.industryAr : project.industry}
-                    </span>
-                  </div>
-
-                  <h3 className={`text-xl font-bold mb-3 ${language === 'ar' ? 'font-arabic' : ''}`}>
-                    {language === 'ar' ? project.titleAr : project.title}
-                  </h3>
-
-                  <p className={`text-gray-600 dark:text-gray-300 mb-4 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
-                    {language === 'ar' ? project.descriptionAr : project.description}
-                  </p>
-
-                  <div className={`flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <div className={`flex items-center gap-1 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                      <Calendar size={16} />
-                      <span className={language === 'ar' ? 'font-arabic' : ''}>{project.year}</span>
-                    </div>
-                    <div className={`flex items-center gap-1 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                      <Users size={16} />
-                      <span className={language === 'ar' ? 'font-arabic' : ''}>
-                        {language === 'ar' ? project.clientAr : project.client}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <h4 className={`font-semibold mb-2 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-                      {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technologies Used:'}
-                    </h4>
-                    <div className={`flex flex-wrap gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                      {project.technologies.map((tech, index) => (
-                        <span key={index} className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className={`font-semibold mb-2 text-primary flex items-center gap-2 ${language === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}>
-                      <Award size={16} />
-                      {language === 'ar' ? 'الإنجازات الرئيسية:' : 'Key Achievements:'}
-                    </h4>
-                    <ul className={`space-y-1 ${language === 'ar' ? 'text-right' : ''}`}>
-                      {(language === 'ar' ? project.achievementsAr : project.achievements).map((achievement, index) => (
-                        <li key={index} className={`text-sm text-gray-600 dark:text-gray-300 flex items-center ${language === 'ar' ? 'flex-row-reverse font-arabic' : ''}`}>
-                          <span className={`w-1.5 h-1.5 bg-accent rounded-full ${language === 'ar' ? 'ml-2' : 'mr-2'}`}></span>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filteredProjects.length === 0 && (
-            <div className={`text-center py-12 ${language === 'ar' ? 'text-right' : ''}`}>
-              <p className={`text-gray-500 text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
-                {language === 'ar' ? 'لا توجد مشاريع تطابق الفلاتر المحددة' : 'No projects match the selected filters'}
+      <AnimationEffect animationType="fadeIn" delay={100}>
+        <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h1 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
+                language === 'ar' ? 'font-arabic' : ''
+              }`}>
+                {language === 'ar' ? 'معرض أعمالنا' : 'Our Portfolio'}
+              </h1>
+              <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto ${
+                language === 'ar' ? 'font-arabic text-right' : ''
+              }`}>
+                {language === 'ar' 
+                  ? 'استكشف مجموعة من مشاريعنا الناجحة التي حققت نتائج استثنائية لعملائنا'
+                  : 'Explore our collection of successful projects that achieved exceptional results for our clients'
+                }
               </p>
             </div>
-          )}
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className={`text-center max-w-3xl mx-auto ${language === 'ar' ? 'text-right' : ''}`}>
-            <h2 className={`text-3xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-              {language === 'ar' ? 'مستعد لبدء مشروعك القادم؟' : 'Ready to Start Your Next Project?'}
-            </h2>
-            <p className={`text-xl mb-8 text-gray-600 dark:text-gray-300 ${language === 'ar' ? 'font-arabic leading-relaxed' : ''}`}>
-              {language === 'ar'
-                ? 'دعنا نساعدك في تحويل فكرتك إلى مشروع ناجح مثل المشاريع التي رأيتها'
-                : 'Let us help you transform your idea into a successful project like the ones you\'ve seen'
-              }
-            </p>
-            <Button className={`btn-primary text-lg px-8 py-3 ${language === 'ar' ? 'font-arabic' : ''}`}>
-              {language === 'ar' ? 'ابدأ مشروعك الآن' : 'Start Your Project Now'}
-            </Button>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimationEffect>
+
+      <AnimationEffect animationType="slideUp" delay={200}>
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            {/* Filters */}
+            <div className="mb-12 space-y-6">
+              {/* Service Type Filter */}
+              <div>
+                <h3 className={`text-lg font-semibold mb-4 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                  {language === 'ar' ? 'تصفية حسب نوع الخدمة:' : 'Filter by Service Type:'}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {serviceTypes.map((type) => (
+                    <Button
+                      key={type.id}
+                      onClick={() => setSelectedServiceFilter(type.id)}
+                      variant={selectedServiceFilter === type.id ? "default" : "outline"}
+                      className={`px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 ${
+                        language === 'ar' ? 'font-arabic' : ''
+                      } ${
+                        selectedServiceFilter === type.id 
+                          ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg' 
+                          : 'hover:bg-primary/10'
+                      }`}
+                    >
+                      {type.name}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Industry Filter */}
+              <div>
+                <h3 className={`text-lg font-semibold mb-4 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                  {language === 'ar' ? 'تصفية حسب الصناعة:' : 'Filter by Industry:'}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {industries.map((industry) => (
+                    <Button
+                      key={industry.id}
+                      onClick={() => setSelectedIndustryFilter(industry.id)}
+                      variant={selectedIndustryFilter === industry.id ? "default" : "outline"}
+                      className={`px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 ${
+                        language === 'ar' ? 'font-arabic' : ''
+                      } ${
+                        selectedIndustryFilter === industry.id 
+                          ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg' 
+                          : 'hover:bg-primary/10'
+                      }`}
+                    >
+                      {industry.name}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Projects Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {filteredProjects.map((project, index) => (
+                <AnimationEffect key={`${project.id}-${selectedServiceFilter}-${selectedIndustryFilter}`} animationType="scale" delay={index * 150}>
+                  <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] group">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-white/90 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                          {serviceTypes.find(type => type.id === project.serviceType)?.name}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="p-8">
+                      <h3 className={`text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300 ${
+                        language === 'ar' ? 'font-arabic text-right' : ''
+                      }`}>
+                        {project.title}
+                      </h3>
+                      
+                      <p className={`text-gray-600 dark:text-gray-300 mb-6 ${
+                        language === 'ar' ? 'font-arabic text-right leading-relaxed' : ''
+                      }`}>
+                        {project.description}
+                      </p>
+
+                      {/* Project Details */}
+                      <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
+                        <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                          <Calendar className={`w-4 h-4 text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+                          <span className={language === 'ar' ? 'font-arabic' : ''}>{project.duration}</span>
+                        </div>
+                        <div className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                          <Users className={`w-4 h-4 text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+                          <span>{project.teamSize} {language === 'ar' ? 'أعضاء' : 'members'}</span>
+                        </div>
+                      </div>
+
+                      {/* Technologies */}
+                      <div className="mb-6">
+                        <h4 className={`font-semibold mb-2 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                          {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technologies:'}
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Key Features */}
+                      <div className="mb-6">
+                        <h4 className={`font-semibold mb-3 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                          {language === 'ar' ? 'الميزات الرئيسية:' : 'Key Features:'}
+                        </h4>
+                        <div className="space-y-2">
+                          {project.features.map((feature, featureIndex) => (
+                            <div key={featureIndex} className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                              <div className={`w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full ${
+                                language === 'ar' ? 'ml-3' : 'mr-3'
+                              }`}></div>
+                              <span className={`text-sm text-gray-600 dark:text-gray-300 ${
+                                language === 'ar' ? 'font-arabic text-right' : ''
+                              }`}>
+                                {feature}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Results */}
+                      <div className="mb-6 p-4 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl">
+                        <h4 className={`font-semibold mb-3 flex items-center ${language === 'ar' ? 'flex-row-reverse font-arabic' : ''}`}>
+                          <Award className={`w-4 h-4 text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+                          {language === 'ar' ? 'النتائج المحققة:' : 'Achieved Results:'}
+                        </h4>
+                        <div className="grid grid-cols-1 gap-2 text-sm">
+                          {Object.values(project.results).map((result, resultIndex) => (
+                            <div key={resultIndex} className={`text-gray-600 dark:text-gray-300 ${
+                              language === 'ar' ? 'font-arabic text-right' : ''
+                            }`}>
+                              • {result}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <Button 
+                        className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 group-hover:scale-105 ${
+                          language === 'ar' ? 'font-arabic' : ''
+                        }`}
+                      >
+                        <ExternalLink className={`w-4 h-4 ${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+                        {language === 'ar' ? 'عرض تفاصيل المشروع' : 'View Project Details'}
+                      </Button>
+                    </div>
+                  </div>
+                </AnimationEffect>
+              ))}
+            </div>
+
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-16">
+                <p className={`text-gray-500 text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
+                  {language === 'ar' ? 'لا توجد مشاريع تطابق الفلاتر المحددة' : 'No projects match the selected filters'}
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      </AnimationEffect>
 
       <Footer />
     </div>
