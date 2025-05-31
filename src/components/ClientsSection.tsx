@@ -1,8 +1,12 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export default function ClientsSection() {
+  const { t, language } = useLanguage();
+  
   const clients = [
     { name: "Microsoft", logo: "https://via.placeholder.com/150x80?text=Microsoft" },
     { name: "Google", logo: "https://via.placeholder.com/150x80?text=Google" },
@@ -64,9 +68,16 @@ export default function ClientsSection() {
   return (
     <section id="clients" className="section-padding bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="section-title mb-12">Our Clients</h2>
-        <div className="mb-8 text-center max-w-2xl mx-auto">
-          <p>Trusted by leading organizations across industries worldwide.</p>
+        <h2 className={`section-title mb-12 ${language === 'ar' ? 'font-arabic' : ''}`}>
+          {language === 'ar' ? 'عملاؤنا' : 'Our Clients'}
+        </h2>
+        <div className={`mb-8 text-center max-w-2xl mx-auto ${language === 'ar' ? 'text-right' : ''}`}>
+          <p className={language === 'ar' ? 'font-arabic leading-relaxed' : ''}>
+            {language === 'ar' 
+              ? 'موثوق بنا من قبل المؤسسات الرائدة في مختلف الصناعات حول العالم.'
+              : 'Trusted by leading organizations across industries worldwide.'
+            }
+          </p>
         </div>
 
         <div
@@ -93,7 +104,11 @@ export default function ClientsSection() {
         </div>
 
         <div className="text-center mt-8">
-          <Button className="btn-primary">View All Clients</Button>
+          <Link to="/clients">
+            <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {language === 'ar' ? 'عرض جميع العملاء' : 'View All Clients'}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

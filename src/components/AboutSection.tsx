@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export default function AboutSection() {
   const { t, language } = useLanguage();
@@ -71,9 +72,11 @@ export default function AboutSection() {
               </li>
             </ul>
             
-            <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-              {t('about.learnMore')}
-            </Button>
+            <Link to="/about">
+              <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+                {t('about.learnMore')}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

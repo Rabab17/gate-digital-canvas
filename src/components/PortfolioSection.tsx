@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 interface Project {
   id: number;
@@ -124,9 +125,11 @@ export default function PortfolioSection() {
         </div>
 
         <div className="text-center mt-12">
-          <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {t('portfolio.seeFullPortfolio')}
-          </Button>
+          <Link to="/projects">
+            <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('portfolio.seeFullPortfolio')}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

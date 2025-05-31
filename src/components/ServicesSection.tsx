@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import ServiceItem from "./ServiceItem";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export default function ServicesSection() {
   const { t, language } = useLanguage();
@@ -147,9 +148,11 @@ export default function ServicesSection() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button className={`btn-primary shimmer-button ${language === 'ar' ? 'font-arabic' : ''}`}>
-            {t('services.exploreAll')}
-          </Button>
+          <Link to="/services">
+            <Button className={`btn-primary shimmer-button ${language === 'ar' ? 'font-arabic' : ''}`}>
+              {t('services.exploreAll')}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

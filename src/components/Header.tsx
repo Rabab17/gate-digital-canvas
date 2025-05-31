@@ -3,26 +3,29 @@ import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
   label: string;
   href: string;
   key: string;
+  isExternal?: boolean;
 }
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, language } = useLanguage();
+  const location = useLocation();
 
   const navItems: NavItem[] = [
-    { label: t('nav.home'), href: "#home", key: 'nav.home' },
-    { label: t('nav.about'), href: "#about", key: 'nav.about' },
-    { label: t('nav.services'), href: "#services", key: 'nav.services' },
-    { label: t('nav.portfolio'), href: "#portfolio", key: 'nav.portfolio' },
-    { label: t('nav.clients'), href: "#clients", key: 'nav.clients' },
-    { label: t('nav.testimonials'), href: "#testimonials", key: 'nav.testimonials' },
-    { label: t('nav.contact'), href: "#contact", key: 'nav.contact' },
+    { label: t('nav.home'), href: "/", key: 'nav.home' },
+    { label: t('nav.about'), href: "/about", key: 'nav.about' },
+    { label: t('nav.services'), href: "/services", key: 'nav.services' },
+    { label: t('nav.portfolio'), href: "/projects", key: 'nav.portfolio' },
+    { label: t('nav.clients'), href: "/clients", key: 'nav.clients' },
+    { label: t('nav.testimonials'), href: "/#testimonials", key: 'nav.testimonials', isExternal: true },
+    { label: t('nav.contact'), href: "/#contact", key: 'nav.contact', isExternal: true },
   ];
 
   useEffect(() => {
@@ -36,11 +39,22 @@ export default function Header() {
     };
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href: string, isExternal: boolean = false) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    
+    if (isExternal && href.startsWith("/#")) {
+      // Handle internal anchor links
+      if (location.pathname !== "/") {
+        // If not on home page, navigate to home first then scroll
+        window.location.href = href;
+      } else {
+        // If on home page, just scroll to element
+        const elementId = href.substring(2); // Remove "/#"
+        const element = document.querySelector(`#${elementId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
   };
 
@@ -53,31 +67,42 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="flex items-center group">
+        <Link to="/" className="flex items-center group">
           <span className={`text-2xl font-bold text-primary transition-all duration-300 group-hover:scale-105 ${
             language === 'ar' ? 'font-arabic' : ''
           }`}>
             E-Business Gate
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <ul className={`flex ${language === 'ar' ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
             {navItems.map((item, index) => (
               <li key={item.key}>
-                <a
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className="font-medium hover:text-primary transition-all duration-300 relative group"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                {item.isExternal ? (
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href, true);
+                    }}
+                    className="font-medium hover:text-primary transition-all duration-300 relative group"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="font-medium hover:text-primary transition-all duration-300 relative group"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -132,21 +157,36 @@ export default function Header() {
         <ul className="px-4 py-2">
           {navItems.map((item, index) => (
             <li key={item.key} className="py-2">
-              <a
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className="block font-medium hover:text-primary transition-all duration-300"
-                style={{ 
-                  animationDelay: `${index * 50}ms`,
-                  transform: mobileMenuOpen ? 'translateX(0)' : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                {item.label}
-              </a>
+              {item.isExternal ? (
+                <a
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href, true);
+                  }}
+                  className="block font-medium hover:text-primary transition-all duration-300"
+                  style={{ 
+                    animationDelay: `${index * 50}ms`,
+                    transform: mobileMenuOpen ? 'translateX(0)' : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  to={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block font-medium hover:text-primary transition-all duration-300"
+                  style={{ 
+                    animationDelay: `${index * 50}ms`,
+                    transform: mobileMenuOpen ? 'translateX(0)' : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
