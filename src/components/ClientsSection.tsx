@@ -40,7 +40,7 @@ export default function ClientsSection() {
   ];
 
   return (
-    <section id="clients" className="section-padding bg-gray-50 dark:bg-gray-900">
+    <section id="clients" className="section-padding bg-white-50 dark:bg-gray-900">
       <div
         className="container mx-auto px-4"
         style={{ direction: language === "ar" ? "rtl" : "ltr" }}
@@ -73,13 +73,13 @@ export default function ClientsSection() {
         >
           {clients.map((client, index) => (
             <SwiperSlide key={index}>
-              <div className="flex-shrink-0 w-40 h-24 rounded-lg bg-white dark:bg-gray-800 shadow-md flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300">
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-w-full max-h-full"
-                />
-              </div>
+           <div className="flex-shrink-0 w-40 h-24 rounded-lg bg-white shadow-md flex items-center justify-center p-4 transition-all duration-300">
+  <img
+    src={client.logo} // سيتم استبدال هذا بمسار الشعار الفعلي
+    alt={client.name}
+    className="max-w-full max-h-full"
+  />
+</div>
             </SwiperSlide>
           ))}
         </Swiper>
