@@ -4,7 +4,8 @@ import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logo from '../assets/EBG logos-01.png';
+import logoLight from '../assets/EBG logos-01.png';      // لوجو الوضع الفاتح
+import logoDark from '../assets/EBG logos-white.png';    // لوجو الوضع الداكن (تأكد من المسار واسم الملف)
 
 interface NavItem {
   label: string;
@@ -19,6 +20,33 @@ export default function Header() {
   const { t, language } = useLanguage();
   const location = useLocation();
 
+  // نراقب وجود class "dark" على عنصر html
+  const [isDarkMode, setIsDarkMode] = useState(
+    document.documentElement.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // مراقبة تغير class على عنصر html لتحديث isDarkMode
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
   const navItems: NavItem[] = [
     { label: t("nav.home"), href: "/", key: "nav.home" },
     { label: t("nav.about"), href: "/about", key: "nav.about" },
@@ -28,14 +56,6 @@ export default function Header() {
     { label: t("nav.testimonials"), href: "/#testimonials", key: "nav.testimonials", isExternal: true },
     { label: t("nav.contact"), href: "/#contact", key: "nav.contact", isExternal: true },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleNavClick = (href: string, isExternal = false) => {
     setMobileMenuOpen(false);
@@ -50,7 +70,7 @@ export default function Header() {
         }
       }
     }
-  };
+  }
 
   return (
     <header
@@ -66,28 +86,29 @@ export default function Header() {
         }`}
       >
         {/* Logo */}
-        <Link
-          to="/"
-          className={`flex items-center gap-3 ${
-            language === "ar" ? "flex-row-reverse" : "flex-row"
-          }`}
-        >
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-10 h-10 object-contain"
-          />
-          <span
-            className={`text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-300 ${
-              language === "ar" ? "font-arabic" : ""
-            }`}
+        <div className={`flex items-center gap-3 ${language === "ar" ? "order-1" : "order-none"}`}>
+          <Link
+            to="/"
+            className={`flex items-center gap-3 ${language === "ar" ? "flex-row-reverse" : "flex-row"}`}
           >
-            {/* يمكنك كتابة نص بجانب الصورة هنا أو تركه فارغ */}
-          </span>
-        </Link>
+            <img
+              src={isDarkMode ? logoDark : logoLight}
+              alt="Logo"
+              className="w-10 h-10 object-contain"
+            />
+            <span
+              className={`text-3xl font-bold ${!scrolled ? "text-[#D4AF37]" : "bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"} transition-all duration-300 ${
+                language === "ar" ? "font-arabic" : ""
+              }`}
+            >
+              {/* يمكنك كتابة نص بجانب الصورة هنا أو تركه فارغ */}
+            </span>
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-1">
+          {/* Main Nav Items */}
           <ul
             className={`flex ${
               language === "ar" ? "space-x-reverse space-x-1" : "space-x-1"
@@ -102,7 +123,7 @@ export default function Header() {
                       e.preventDefault();
                       handleNavClick(item.href, true);
                     }}
-                    className="px-4 py-2 rounded-lg font-medium hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group"
+                    className={`px-4 py-2 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {item.label}
@@ -111,7 +132,7 @@ export default function Header() {
                 ) : (
                   <Link
                     to={item.href}
-                    className="px-4 py-2 rounded-lg font-medium hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group"
+                    className={`px-4 py-2 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {item.label}
@@ -121,9 +142,12 @@ export default function Header() {
               </li>
             ))}
           </ul>
+
+          {/* Control Buttons Group - Placed after nav items */}
+          {/* Removed flex-row-reverse for Arabic to match image order (Theme, Lang, Start) visually left-to-right */}
           <div
             className={`flex items-center gap-3 ml-6 ${
-              language === "ar" ? "flex-row-reverse" : ""
+              language === "ar" ? "mr-6 ml-0 order-first" : "ml-6"
             }`}
           >
             <ThemeToggle />
@@ -134,7 +158,7 @@ export default function Header() {
                 e.preventDefault();
                 handleNavClick("/#contact", true);
               }}
-              className="bg-gradient-to-r from-primary to-accent text-white px-6 py-2 rounded-full font-medium hover:scale-105 hover:shadow-lg transition-all duration-300"
+              className={`${!scrolled ? "bg-[#D4AF37] hover:bg-[#C5A028]" : "bg-gradient-to-r from-primary to-accent"} text-white px-6 py-2 rounded-full font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
             >
               {language === "ar" ? "ابدأ مشروعك" : "Start Project"}
             </a>
@@ -142,15 +166,12 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Toggle */}
-        <div
-          className={`flex items-center lg:hidden gap-4 ${
-            language === "ar" ? "flex-row-reverse" : ""
-          }`}
-        >
+        {/* Grouped toggles and menu button for consistent layout */}
+        <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggle />
           <LanguageToggle />
           <button
-            className="p-2 text-gray-600 dark:text-gray-300 transition-all duration-300 hover:scale-110 hover:bg-primary/10 rounded-lg"
+            className={`p-2 ${!scrolled ? "text-[#D4AF37]" : "text-gray-600 dark:text-gray-300"} transition-all duration-300 hover:scale-110 hover:bg-primary/10 rounded-lg`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -166,6 +187,7 @@ export default function Header() {
         } bg-white dark:bg-gray-900 shadow-xl border-t border-gray-200 dark:border-gray-700`}
       >
         <ul className="px-4 py-6 space-y-2">
+          {/* Main Nav Items */}
           {navItems.map((item, index) => (
             <li key={item.key}>
               {item.isExternal ? (
@@ -175,7 +197,7 @@ export default function Header() {
                     e.preventDefault();
                     handleNavClick(item.href, true);
                   }}
-                  className="block px-4 py-3 rounded-lg font-medium hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                  className={`block px-4 py-3 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:bg-primary/10 hover:text-primary transition-all duration-300`}
                   style={{
                     animationDelay: `${index * 50}ms`,
                     transform: mobileMenuOpen
@@ -190,7 +212,7 @@ export default function Header() {
                 <Link
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg font-medium hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                  className={`block px-4 py-3 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:bg-primary/10 hover:text-primary transition-all duration-300`}
                   style={{
                     animationDelay: `${index * 50}ms`,
                     transform: mobileMenuOpen
@@ -204,14 +226,23 @@ export default function Header() {
               )}
             </li>
           ))}
-          <li className="pt-4 border-t border-gray-200 dark:border-gray-700">
+
+          {/* Control Buttons Group - Placed at the end of the mobile menu list */}
+          <li className={`pt-4 border-t border-gray-200 dark:border-gray-700`}>
+            {/* Grouped all three buttons together */}
+            <div
+              className={`flex items-center justify-center gap-4 mb-4 ${language === "ar" ? "" : ""}`}
+            >
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
             <a
               href="/#contact"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick("/#contact", true);
               }}
-              className="block bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full font-medium text-center hover:scale-105 transition-all duration-300"
+              className={`inline-block w-full text-center ${!scrolled ? "bg-[#D4AF37] hover:bg-[#C5A028]" : "bg-gradient-to-r from-primary to-accent"} text-white px-6 py-3 rounded-full font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
             >
               {language === "ar" ? "ابدأ مشروعك" : "Start Project"}
             </a>

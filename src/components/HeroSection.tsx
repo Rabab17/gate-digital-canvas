@@ -163,7 +163,7 @@ export default function HeroSection() {
 
         {/* Enhanced Features Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16 animate-fade-in-up"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16 animate-fade-in-up pb-20"
           style={{ animationDelay: "1.1s" }}
         >
           {[
