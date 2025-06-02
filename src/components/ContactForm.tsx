@@ -13,7 +13,7 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { t } = useLanguage(); // ✅ استخدم الـ hook بشكل صحيح
+  const { t } = useLanguage();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

@@ -75,7 +75,7 @@ export default function ClientsSection() {
             <SwiperSlide key={index}>
            <div className="flex-shrink-0 w-40 h-24 rounded-lg bg-white shadow-md flex items-center justify-center p-4 transition-all duration-300">
   <img
-    src={client.logo} // سيتم استبدال هذا بمسار الشعار الفعلي
+    src={client.logo} 
     alt={client.name}
     className="max-w-full max-h-full"
   />

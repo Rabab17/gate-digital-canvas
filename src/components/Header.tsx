@@ -5,8 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logoLight from '../assets/EBG logos-01.png';      // لوجو الوضع الفاتح
-import logoDark from '../assets/EBG logos-white.png';    // لوجو الوضع الداكن (تأكد من المسار واسم الملف)
-
+import logoDark from '../assets/EBG logos-white.png';    // لوجو الوضع الداكن 
 interface NavItem {
   label: string;
   href: string;
@@ -31,7 +30,7 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    // مراقبة تغير class على عنصر html لتحديث isDarkMode
+   
     const observer = new MutationObserver(() => {
       setIsDarkMode(document.documentElement.classList.contains("dark"));
     });
@@ -101,7 +100,7 @@ export default function Header() {
                 language === "ar" ? "font-arabic" : ""
               }`}
             >
-              {/* يمكنك كتابة نص بجانب الصورة هنا أو تركه فارغ */}
+          
             </span>
           </Link>
         </div>
@@ -143,8 +142,7 @@ export default function Header() {
             ))}
           </ul>
 
-          {/* Control Buttons Group - Placed after nav items */}
-          {/* Removed flex-row-reverse for Arabic to match image order (Theme, Lang, Start) visually left-to-right */}
+      
           <div
             className={`flex items-center gap-3 ml-6 ${
               language === "ar" ? "mr-6 ml-0 order-first" : "ml-6"
