@@ -15,6 +15,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import MouseTracker from "@/components/MouseTracker";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
+
 const Index = () => {
   useEffect(() => {
     // Scroll to top when the page loads
@@ -70,6 +71,7 @@ const Index = () => {
         <AnimationEffect animationType="slideUp" delay={200}>
           <ContactSection />
         </AnimationEffect>
+       
         
         <Footer />
         <ScrollToTop />

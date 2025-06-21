@@ -39,7 +39,7 @@ export default function ContactForm() {
         <Input
           type="text"
           name="name"
-          placeholder={t("contact.form.name")}
+          placeholder={t("contact.name")}
           value={formData.name}
           onChange={handleChange}
           required
@@ -50,7 +50,7 @@ export default function ContactForm() {
         <Input
           type="email"
           name="email"
-          placeholder={t("contact.form.email")}
+          placeholder={t("contact.email")}
           value={formData.email}
           onChange={handleChange}
           required
@@ -60,7 +60,7 @@ export default function ContactForm() {
       <div>
         <Textarea
           name="message"
-          placeholder={t("contact.form.message")}
+          placeholder={t("contact.message")}
           value={formData.message}
           onChange={handleChange}
           required
@@ -72,7 +72,7 @@ export default function ContactForm() {
         className="w-full shimmer-button bg-primary hover:bg-blue-600 gpu-accelerated"
         disabled={isSubmitting}
       >
-        {isSubmitting ? t("contact.form.sending") : t("contact.form.send")}
+        {isSubmitting ? t("contact.sending") : t("contact.send")}
       </Button>
     </form>
   );

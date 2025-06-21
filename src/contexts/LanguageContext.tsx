@@ -20,6 +20,7 @@ const translations = {
     'nav.clients': 'Clients',
     'nav.testimonials': 'Testimonials',
     'nav.contact': 'Contact',
+    'Start Project':'Start Project',
 
     // Hero Section
     'hero.title': 'E-Business Gate - Empowering Businesses through Digital Innovation',
@@ -81,9 +82,46 @@ const translations = {
     'testimonials.title': 'What Our Clients Say',
     'testimonials.subtitle': 'Real feedback from satisfied customers',
 
-    // Contact Section
+    // Contact Section (General)
     'contact.title': 'Get In Touch',
     'contact.subtitle': 'Ready to start your digital transformation?',
+    'contact.getInTouch': 'Stay Connected',
+    'contact.description': 'Have a project in mind or want to learn more about our services? We’re happy to connect with you. Please fill out the form or reach us directly via the contact information below.',
+    'contact.locations': 'Locations',
+    'contact.egypt': 'Egypt',
+    'contact.fayoumCairo': 'Fayoum / Cairo',
+    'contact.saudi': 'Saudi Arabia',
+    'contact.riyadh': 'Riyadh',
+    'contact.uae': 'UAE',
+    'contact.dubai': 'Dubai',
+    'contact.info': 'Contact Information',
+    'contact.email': 'Email',
+    'contact.phone': 'Phone',
+
+    // Contact Page and Form Specific Translations
+    'contactPage.title': 'Contact Us',
+    'contactPage.description': 'Get in touch with us for your service requests.',
+    'contactForm.fullName': 'Full Name',
+    'contactForm.companyName': 'Company Name',
+    'contactForm.phoneNumber': 'Phone Number',
+    'contactForm.email': 'Email Address',
+    'contactForm.address': 'Address',
+    'contactForm.message': 'Your Message',
+    'contactForm.submitRequest': 'Submit Request',
+    'contactForm.fullNameRequired': 'Full Name is required.',
+    'contactForm.phoneNumberRequired': 'Phone Number is required.',
+    'contactForm.messageRequired': 'Message is required.',
+    'contactForm.submissionSuccess': 'Your service request has been sent successfully! We will get back to you shortly.',
+    'contactForm.submissionError': 'There was an error sending your request. Please try again.',
+    'contactForm.sending': 'Sending...',
+
+
+    //////////// Form
+    'contact.message':"message",
+    "contact.name":"name",
+    "contact.send":"send",
+
+
 
     // Footer
     'footer.description': 'Empowering businesses through digital innovation since 2010. We provide comprehensive digital solutions to help your business thrive in the online world.',
@@ -99,27 +137,6 @@ const translations = {
     'common.learnMore': 'Learn More',
     'common.viewAll': 'View All',
     'common.getStarted': 'Get Started',
-
-    'contact.getInTouch': 'Stay Connected',
-    'contact.description': 'Have a project in mind or want to learn more about our services? We’re happy to connect with you. Please fill out the form or reach us directly via the contact information below.',
-    'contact.locations': 'Locations',
-    'contact.egypt': 'Egypt',
-    'contact.fayoumCairo': 'Fayoum / Cairo',
-    'contact.saudi': 'Saudi Arabia',
-    'contact.riyadh': 'Riyadh',
-    'contact.uae': 'UAE',
-    'contact.dubai': 'Dubai',
-    'contact.info': 'Contact Information',
-    'contact.email': 'Email',
-    'contact.phone': 'Phone',
-
-    'contact.form.name': 'Your Name',
-    'contact.form.email': 'Your Email',
-    'contact.form.message': 'Your Message',
-    'contact.form.send': 'Send Message',
-    'contact.form.sending': 'Sending...',
-    'contact.successMessage': 'Message sent successfully!',
-
   },
   ar: {
     // Header
@@ -130,6 +147,7 @@ const translations = {
     'nav.clients': 'عملاؤنا',
     'nav.testimonials': 'آراء العملاء',
     'nav.contact': 'اتصل بنا',
+      'Start Project':'أبداء مشروعك',
 
     // Hero Section
     'hero.title': 'بوابة **الأعمال الإلكترونية** - تمكين الشركات من خلال الابتكار الرقمي',
@@ -191,9 +209,42 @@ const translations = {
     'testimonials.title': 'ماذا يقول عملاؤنا',
     'testimonials.subtitle': 'تعليقات حقيقية من العملاء الراضين',
 
-    // Contact Section
+    // Contact Section (General)
     'contact.title': 'تواصل معنا',
     'contact.subtitle': 'هل أنت مستعد لبدء تحولك الرقمي؟',
+    'contact.getInTouch': 'ابقَ على تواصل',
+    'contact.description': 'هل لديك مشروع **في ذهنك** أو ترغب في معرفة المزيد عن خدماتنا؟ يسعدنا التواصل معك. يرجى ملء النموذج أو الاتصال بنا مباشرة عبر معلومات الاتصال أدناه.',
+    'contact.locations': 'المواقع',
+    'contact.egypt': 'مصر',
+    'contact.fayoumCairo': 'الفيوم / القاهرة',
+    'contact.saudi': 'المملكة العربية السعودية',
+    'contact.riyadh': 'الرياض',
+    'contact.uae': 'الإمارات العربية المتحدة',
+    'contact.dubai': 'دبي',
+    'contact.info': 'معلومات الاتصال',
+    'contact.email': 'البريد الإلكتروني',
+    'contact.phone': 'الهاتف',
+
+    // Contact Page and Form Specific Translations
+    'contactPage.title': 'تواصل معنا',
+    'contactPage.description': 'تواصل معنا لطلبات الخدمة الخاصة بك.',
+    'contactForm.fullName': 'الاسم الكامل',
+    'contactForm.companyName': 'اسم الشركة',
+    'contactForm.phoneNumber': 'رقم الهاتف',
+    'contactForm.email': 'البريد الإلكتروني',
+    'contactForm.address': 'العنوان',
+    'contactForm.message': 'نص الرسالة',
+    'contactForm.submitRequest': 'إرسال الطلب',
+    'contactForm.fullNameRequired': 'الاسم الكامل مطلوب.',
+    'contactForm.phoneNumberRequired': 'رقم الهاتف مطلوب.',
+    'contactForm.messageRequired': 'نص الرسالة مطلوب.',
+    'contactForm.submissionSuccess': 'تم إرسال طلب الخدمة بنجاح! سنتواصل معك قريبًا.',
+    'contactForm.submissionError': 'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.',
+    'contactForm.sending': 'جاري الإرسال...',
+    //////////// form
+    'contact.message':"رساله",
+    "contact.name":"الاسم",
+    "contact.send":"ارسال",
 
     // Footer
     'footer.description': 'تمكين الشركات من خلال الابتكار الرقمي منذ عام 2010. نحن نقدم حلولاً رقمية شاملة لمساعدة أعمالك على الازدهار في العالم الرقمي.',
@@ -209,27 +260,6 @@ const translations = {
     'common.learnMore': 'اعرف المزيد',
     'common.viewAll': 'عرض الكل',
     'common.getStarted': 'ابدأ الآن',
-
-    'contact.getInTouch': 'ابقَ على تواصل',
-    'contact.description': 'هل لديك مشروع **في ذهنك** أو ترغب في معرفة المزيد عن خدماتنا؟ يسعدنا التواصل معك. يرجى ملء النموذج أو الاتصال بنا مباشرة عبر معلومات الاتصال أدناه.',
-    'contact.locations': 'المواقع',
-    'contact.egypt': 'مصر',
-    'contact.fayoumCairo': 'الفيوم / القاهرة',
-    'contact.saudi': 'المملكة العربية السعودية',
-    'contact.riyadh': 'الرياض',
-    'contact.uae': 'الإمارات العربية المتحدة',
-    'contact.dubai': 'دبي',
-    'contact.info': 'معلومات الاتصال',
-    'contact.email': 'البريد الإلكتروني',
-    'contact.phone': 'الهاتف',
-
-    'contact.form.name': 'اسمك',
-    'contact.form.email': 'بريدك الإلكتروني',
-    'contact.form.message': 'رسالتك',
-    'contact.form.send': 'إرسال الرسالة',
-    'contact.form.sending': 'جاري الإرسال...',
-    'contact.successMessage': 'تم إرسال الرسالة بنجاح!',
-
   }
 };
 

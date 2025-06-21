@@ -159,19 +159,25 @@ export default function AboutUs() {
             <h2 className={`text-3xl font-bold text-center mb-6 ${language === 'ar' ? 'font-arabic' : ''}`}>
               {t('about.values.title')}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${language === 'ar' ? 'justify-end items-end text-right' : 'justify-center text-center'}`}
+              dir={language === 'ar' ? 'rtl' : 'ltr'}
+            >
               {[
                 { title: language === 'ar' ? 'التميز' : 'Excellence', description: t('about.values.excellence'), icon: '🏆' },
                 { title: language === 'ar' ? 'الابتكار' : 'Innovation', description: t('about.values.innovation'), icon: '💡' },
                 { title: language === 'ar' ? 'النزاهة' : 'Integrity', description: t('about.values.integrity'), icon: '🤝' },
                 { title: language === 'ar' ? 'التعاون' : 'Collaboration', description: t('about.values.collaboration'), icon: '👥' }
               ].map((value, index) => (
-                <div key={index} className="animate-stagger bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  <div className="text-4xl mb-4 text-center">{value.icon}</div>
-                  <h3 className={`text-xl font-bold mb-3 text-center ${language === 'ar' ? 'font-arabic' : ''}`}>
+                <div
+                  key={index}
+                  className={`animate-stagger bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 ${language === 'ar' ? 'text-right' : 'text-center'}`}
+                >
+                  <div className="text-4xl mb-4">{value.icon}</div>
+                  <h3 className={`text-xl font-bold mb-3 ${language === 'ar' ? 'font-arabic' : ''}`}>
                     {value.title}
                   </h3>
-                  <p className={`text-gray-600 dark:text-gray-300 text-center ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                  <p className={`text-gray-600 dark:text-gray-300 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
                     {value.description}
                   </p>
                 </div>
@@ -261,12 +267,13 @@ export default function AboutUs() {
                 : 'Let us help you transform your ideas into digital reality'
               }
             </p>
-            <Link to="/#contact">
+            <Link to="/ContactUs">
               <Button
                 className={`bg-white text-primary hover:bg-gray-100 font-bold px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 ${
                   language === 'ar' ? 'font-arabic' : ''
                 }`}
               >
+                
                 {language === 'ar' ? 'ابدأ مشروعك الآن' : 'Start Your Project Now'}
               </Button>
             </Link>
