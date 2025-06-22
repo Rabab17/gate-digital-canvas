@@ -12,7 +12,7 @@ export default function AboutUs() {
   const teamMembers = [
     {
       name: language === 'ar' ? 'أحمد إبراهيم' : 'Ahmed Ibrahim',
-      position: language === 'ar' ? 'مدير عام' : 'CEO & Founder',
+      position: language === 'ar' ? 'المدير العام والمؤسس' : 'CEO & Founder',
       bio: language === 'ar'
         ? 'خبير في التقنيات الرقمية مع أكثر من 15 عامًا من الخبرة في قيادة المشاريع التقنية المعقدة.'
         : 'Digital technology expert with over 15 years of experience leading complex tech projects.',
@@ -24,7 +24,7 @@ export default function AboutUs() {
     },
     {
       name: language === 'ar' ? 'ليلى محمود' : 'Laila Mahmoud',
-      position: language === 'ar' ? 'مديرة التطوير' : 'CTO',
+      position: language === 'ar' ? 'المديرة التقنية' : 'CTO',
       bio: language === 'ar'
         ? 'مهندسة برمجيات متخصصة في تطوير التطبيقات المتطورة والحلول السحابية.'
         : 'Software engineer specializing in advanced application development and cloud solutions.',
@@ -48,7 +48,7 @@ export default function AboutUs() {
     },
     {
       name: language === 'ar' ? 'أميرة خالد' : 'Amira Khaled',
-      position: language === 'ar' ? 'مديرة التصميم' : 'Creative Director',
+      position: language === 'ar' ? 'المديرة الإبداعية' : 'Creative Director',
       bio: language === 'ar'
         ? 'مصممة مبدعة متخصصة في تجربة المستخدم والهوية البصرية.'
         : 'Creative designer specializing in user experience and visual identity.',
@@ -77,7 +77,7 @@ export default function AboutUs() {
                 language === 'ar' ? 'font-arabic text-right' : ''
               }`}>
                 {language === 'ar'
-                  ? 'تعرف على قصتنا ورؤيتنا وفريقنا المتميز الذي يجعل التحول الرقمي ممكناً'
+                  ? 'تعرف على قصتنا ورؤيتنا وفريقنا المتميز الذي يجعل التحول الرقمي ممكنًا.'
                   : 'Learn about our story, vision, and the exceptional team that makes digital transformation possible'
                 }
               </p>
@@ -111,32 +111,83 @@ export default function AboutUs() {
                 <p className={`text-3xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
                   {t('about.values.title')}
                 </p>
-                <ul className="mb-8 space-y-2">
-                  <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                    <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                      {t('about.values.excellence')}
-                    </span>
-                  </li>
-                  <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                    <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                      {t('about.values.innovation')}
-                    </span>
-                  </li>
-                  <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                    <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                      {t('about.values.integrity')}
-                    </span>
-                  </li>
-                  <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                    <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                      {t('about.values.collaboration')}
-                    </span>
-                  </li>
-                </ul>
+              <ul className="mb-8 space-y-2">
+  {/* التميز / Excellence */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.excellence')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.excellence')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* الابتكار / Innovation */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.innovation')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.innovation')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* النزاهة / Integrity */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.integrity')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.integrity')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* التعاون / Collaboration */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.collaboration')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.collaboration')}
+        </span>
+      </>
+    )}
+  </li>
+</ul>
               </div>
 
               <div className="relative">
@@ -198,7 +249,7 @@ export default function AboutUs() {
                 language === 'ar' ? 'font-arabic text-right' : ''
               }`}>
                 {language === 'ar'
-                  ? 'تعرف على الخبراء الذين يقفون وراء نجاح مشاريعنا'
+                  ? 'تعرف على الخبراء الذين يقفون وراء نجاح مشاريعنا.'
                   : 'Meet the experts behind our successful projects'
                 }
               </p>
@@ -211,8 +262,11 @@ export default function AboutUs() {
                   className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                 >
                   <div className="relative mb-6">
-                    {/* تم إزالة وسم الصورة بالكامل، وترك مساحة فارغة أو لون خلفية */}
-                    <div className="w-24 h-24 rounded-full mx-auto bg-gray-200 dark:bg-gray-700"></div> {/* ترك مساحة فارغة أو لون خلفية */}
+                    {/* Placeholder for team member image */}
+                    <div className="w-24 h-24 rounded-full mx-auto bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 text-lg">
+                      {/* You can add initials or a generic icon here */}
+                      {member.name.charAt(0)}
+                    </div> 
                     <div className="absolute inset-0 w-24 h-24 rounded-full mx-auto bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
@@ -263,7 +317,7 @@ export default function AboutUs() {
             </h2>
             <p className={`text-xl mb-8 opacity-90 ${language === 'ar' ? 'font-arabic' : ''}`}>
               {language === 'ar'
-                ? 'دعنا نساعدك في تحويل أفكارك إلى واقع رقمي'
+                ? 'دعنا نساعدك في تحويل أفكارك إلى واقع رقمي.'
                 : 'Let us help you transform your ideas into digital reality'
               }
             </p>
@@ -273,7 +327,6 @@ export default function AboutUs() {
                   language === 'ar' ? 'font-arabic' : ''
                 }`}
               >
-                
                 {language === 'ar' ? 'ابدأ مشروعك الآن' : 'Start Your Project Now'}
               </Button>
             </Link>

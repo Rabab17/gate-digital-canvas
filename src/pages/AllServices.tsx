@@ -1,16 +1,17 @@
-
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimationEffect from "@/components/AnimationEffect";
-import { Button } from "@/components/ui/button";
-import { 
-  Search, 
-  Smartphone, 
-  Globe, 
-  Palette, 
-  Cloud, 
+import {
+  Button
+} from "@/components/ui/button";
+import {
+  Search,
+  Smartphone,
+  Globe,
+  Palette,
+  Cloud,
   BarChart3,
   ShoppingCart,
   Camera,
@@ -25,15 +26,32 @@ import {
 } from "lucide-react";
 
 export default function AllServices() {
-  const { language } = useLanguage();
+  const {
+    language
+  } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
-    { id: 'all', name: language === 'ar' ? 'جميع الخدمات' : 'All Services' },
-    { id: 'development', name: language === 'ar' ? 'التطوير' : 'Development' },
-    { id: 'design', name: language === 'ar' ? 'التصميم' : 'Design' },
-    { id: 'marketing', name: language === 'ar' ? 'التسويق' : 'Marketing' },
-    { id: 'business', name: language === 'ar' ? 'حلول الأعمال' : 'Business Solutions' },
+    {
+      id: 'all',
+      name: language === 'ar' ? 'جميع الخدمات' : 'All Services'
+    },
+    {
+      id: 'development',
+      name: language === 'ar' ? 'التطوير' : 'Development'
+    },
+    {
+      id: 'design',
+      name: language === 'ar' ? 'التصميم' : 'Design'
+    },
+    {
+      id: 'marketing',
+      name: language === 'ar' ? 'التسويق' : 'Marketing'
+    },
+    {
+      id: 'business',
+      name: language === 'ar' ? 'حلول الأعمال' : 'Business Solutions'
+    },
   ];
 
   const services = [
@@ -41,29 +59,29 @@ export default function AllServices() {
     {
       icon: <Globe className="w-8 h-8" />,
       title: language === 'ar' ? 'تطوير المواقع الإلكترونية' : 'Web Development',
-      description: language === 'ar' ? 'مواقع ويب متجاوبة وسريعة مبنية بأحدث التقنيات' : 'Responsive and fast websites built with latest technologies',
+      description: language === 'ar' ? 'مواقع ويب متجاوبة وسريعة مبنية بأحدث التقنيات.' : 'Responsive and fast websites built with latest technologies',
       category: 'development',
       features: [
         language === 'ar' ? 'تصميم متجاوب' : 'Responsive Design',
         language === 'ar' ? 'تحسين الأداء' : 'Performance Optimization',
-        language === 'ar' ? 'أمان عالي' : 'High Security'
+        language === 'ar' ? 'أمان عالٍ' : 'High Security'
       ]
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: language === 'ar' ? 'تطوير التطبيقات المحمولة' : 'Mobile App Development',
-      description: language === 'ar' ? 'تطبيقات iOS و Android أصلية ومتعددة المنصات' : 'Native and cross-platform iOS & Android applications',
+      description: language === 'ar' ? 'تطبيقات iOS و Android أصلية ومتعددة المنصات.' : 'Native and cross-platform iOS & Android applications',
       category: 'development',
       features: [
         language === 'ar' ? 'تطبيقات أصلية' : 'Native Apps',
-        language === 'ar' ? 'متعدد المنصات' : 'Cross-Platform',
+        language === 'ar' ? 'متعددة المنصات' : 'Cross-Platform',
         language === 'ar' ? 'تجربة مستخدم ممتازة' : 'Excellent UX'
       ]
     },
     {
       icon: <Code className="w-8 h-8" />,
       title: language === 'ar' ? 'تطوير البرمجيات المخصصة' : 'Custom Software Development',
-      description: language === 'ar' ? 'حلول برمجية مخصصة لاحتياجات عملك الفريدة' : 'Tailored software solutions for your unique business needs',
+      description: language === 'ar' ? 'حلول برمجية مخصصة لاحتياجات عملك الفريدة.' : 'Tailored software solutions for your unique business needs',
       category: 'development',
       features: [
         language === 'ar' ? 'حلول مخصصة' : 'Custom Solutions',
@@ -74,7 +92,7 @@ export default function AllServices() {
     {
       icon: <Database className="w-8 h-8" />,
       title: language === 'ar' ? 'إدارة قواعد البيانات' : 'Database Management',
-      description: language === 'ar' ? 'تصميم وإدارة قواعد البيانات المتقدمة' : 'Advanced database design and management',
+      description: language === 'ar' ? 'تصميم وإدارة قواعد البيانات المتقدمة.' : 'Advanced database design and management',
       category: 'development',
       features: [
         language === 'ar' ? 'تحسين الأداء' : 'Performance Tuning',
@@ -87,7 +105,7 @@ export default function AllServices() {
     {
       icon: <Palette className="w-8 h-8" />,
       title: language === 'ar' ? 'تصميم الهوية البصرية' : 'Brand Identity Design',
-      description: language === 'ar' ? 'هوية بصرية قوية ومتسقة لعلامتك التجارية' : 'Strong and consistent visual identity for your brand',
+      description: language === 'ar' ? 'هوية بصرية قوية ومتسقة لعلامتك التجارية.' : 'Strong and consistent visual identity for your brand',
       category: 'design',
       features: [
         language === 'ar' ? 'تصميم الشعار' : 'Logo Design',
@@ -97,8 +115,8 @@ export default function AllServices() {
     },
     {
       icon: <Monitor className="w-8 h-8" />,
-      title: language === 'ar' ? 'تصميم واجهة المستخدم' : 'UI/UX Design',
-      description: language === 'ar' ? 'تجارب مستخدم استثنائية وواجهات جذابة' : 'Exceptional user experiences and attractive interfaces',
+      title: language === 'ar' ? 'تصميم واجهة وتجربة المستخدم (UI/UX)' : 'UI/UX Design',
+      description: language === 'ar' ? 'تجارب مستخدم استثنائية وواجهات جذابة.' : 'Exceptional user experiences and attractive interfaces',
       category: 'design',
       features: [
         language === 'ar' ? 'بحث المستخدمين' : 'User Research',
@@ -109,7 +127,7 @@ export default function AllServices() {
     {
       icon: <Camera className="w-8 h-8" />,
       title: language === 'ar' ? 'التصوير والإنتاج المرئي' : 'Photography & Visual Production',
-      description: language === 'ar' ? 'تصوير احترافي وإنتاج محتوى مرئي عالي الجودة' : 'Professional photography and high-quality visual content production',
+      description: language === 'ar' ? 'تصوير احترافي وإنتاج محتوى مرئي عالي الجودة.' : 'Professional photography and high-quality visual content production',
       category: 'design',
       features: [
         language === 'ar' ? 'تصوير منتجات' : 'Product Photography',
@@ -120,7 +138,7 @@ export default function AllServices() {
     {
       icon: <PenTool className="w-8 h-8" />,
       title: language === 'ar' ? 'تصميم المطبوعات' : 'Print Design',
-      description: language === 'ar' ? 'تصميم مواد مطبوعة احترافية وجذابة' : 'Professional and attractive print material design',
+      description: language === 'ar' ? 'تصميم مواد مطبوعة احترافية وجذابة.' : 'Professional and attractive print material design',
       category: 'design',
       features: [
         language === 'ar' ? 'كتيبات وبروشورات' : 'Brochures & Catalogs',
@@ -132,8 +150,8 @@ export default function AllServices() {
     // Marketing Services
     {
       icon: <Search className="w-8 h-8" />,
-      title: language === 'ar' ? 'تحسين محركات البحث' : 'SEO Optimization',
-      description: language === 'ar' ? 'تحسين موقعك لمحركات البحث وزيادة الزيارات' : 'Optimize your website for search engines and increase traffic',
+      title: language === 'ar' ? 'تحسين محركات البحث (SEO)' : 'SEO Optimization',
+      description: language === 'ar' ? 'تحسين موقعك لمحركات البحث لزيادة الزيارات.' : 'Optimize your website for search engines and increase traffic',
       category: 'marketing',
       features: [
         language === 'ar' ? 'تحليل الكلمات المفتاحية' : 'Keyword Analysis',
@@ -144,7 +162,7 @@ export default function AllServices() {
     {
       icon: <Megaphone className="w-8 h-8" />,
       title: language === 'ar' ? 'التسويق عبر وسائل التواصل الاجتماعي' : 'Social Media Marketing',
-      description: language === 'ar' ? 'استراتيجيات تسويق فعالة عبر منصات التواصل الاجتماعي' : 'Effective marketing strategies across social media platforms',
+      description: language === 'ar' ? 'استراتيجيات تسويق فعالة عبر منصات التواصل الاجتماعي.' : 'Effective marketing strategies across social media platforms',
       category: 'marketing',
       features: [
         language === 'ar' ? 'إدارة المحتوى' : 'Content Management',
@@ -155,7 +173,7 @@ export default function AllServices() {
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: language === 'ar' ? 'التسويق الرقمي المتكامل' : 'Integrated Digital Marketing',
-      description: language === 'ar' ? 'حملات تسويق رقمي شاملة ومتكاملة' : 'Comprehensive and integrated digital marketing campaigns',
+      description: language === 'ar' ? 'حملات تسويق رقمي شاملة ومتكاملة.' : 'Comprehensive and integrated digital marketing campaigns',
       category: 'marketing',
       features: [
         language === 'ar' ? 'استراتيجية شاملة' : 'Comprehensive Strategy',
@@ -166,7 +184,7 @@ export default function AllServices() {
     {
       icon: <BarChart3 className="w-8 h-8" />,
       title: language === 'ar' ? 'تحليل البيانات والتقارير' : 'Data Analysis & Reporting',
-      description: language === 'ar' ? 'تحليل شامل للبيانات وتقارير مفصلة' : 'Comprehensive data analysis and detailed reporting',
+      description: language === 'ar' ? 'تحليل شامل للبيانات وتقديم تقارير مفصلة.' : 'Comprehensive data analysis and detailed reporting',
       category: 'marketing',
       features: [
         language === 'ar' ? 'تحليل السلوك' : 'Behavior Analysis',
@@ -179,7 +197,7 @@ export default function AllServices() {
     {
       icon: <ShoppingCart className="w-8 h-8" />,
       title: language === 'ar' ? 'حلول التجارة الإلكترونية' : 'E-commerce Solutions',
-      description: language === 'ar' ? 'متاجر إلكترونية متكاملة وحلول دفع آمنة' : 'Complete online stores and secure payment solutions',
+      description: language === 'ar' ? 'متاجر إلكترونية متكاملة وحلول دفع آمنة.' : 'Complete online stores and secure payment solutions',
       category: 'business',
       features: [
         language === 'ar' ? 'متجر متكامل' : 'Complete Store',
@@ -190,18 +208,18 @@ export default function AllServices() {
     {
       icon: <Cloud className="w-8 h-8" />,
       title: language === 'ar' ? 'الحلول السحابية' : 'Cloud Solutions',
-      description: language === 'ar' ? 'خدمات سحابية متقدمة وآمنة لعملك' : 'Advanced and secure cloud services for your business',
+      description: language === 'ar' ? 'خدمات سحابية متقدمة وآمنة لعملك.' : 'Advanced and secure cloud services for your business',
       category: 'business',
       features: [
         language === 'ar' ? 'التخزين السحابي' : 'Cloud Storage',
         language === 'ar' ? 'الخوادم الافتراضية' : 'Virtual Servers',
-        language === 'ar' ? 'النسخ الاحتياطي' : 'Backup Solutions'
+        language === 'ar' ? 'حلول النسخ الاحتياطي' : 'Backup Solutions'
       ]
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: language === 'ar' ? 'الأمن السيبراني' : 'Cybersecurity',
-      description: language === 'ar' ? 'حماية شاملة لأنظمتك وبياناتك' : 'Comprehensive protection for your systems and data',
+      description: language === 'ar' ? 'حماية شاملة لأنظمتك وبياناتك.' : 'Comprehensive protection for your systems and data',
       category: 'business',
       features: [
         language === 'ar' ? 'مراقبة الأمان' : 'Security Monitoring',
@@ -212,7 +230,7 @@ export default function AllServices() {
     {
       icon: <Zap className="w-8 h-8" />,
       title: language === 'ar' ? 'أتمتة العمليات' : 'Process Automation',
-      description: language === 'ar' ? 'أتمتة العمليات التجارية لزيادة الكفاءة' : 'Business process automation to increase efficiency',
+      description: language === 'ar' ? 'أتمتة العمليات التجارية لزيادة الكفاءة.' : 'Business process automation to increase efficiency',
       category: 'business',
       features: [
         language === 'ar' ? 'سير عمل آلي' : 'Automated Workflows',
@@ -222,14 +240,14 @@ export default function AllServices() {
     }
   ];
 
-  const filteredServices = selectedCategory === 'all' 
-    ? services 
-    : services.filter(service => service.category === selectedCategory);
+  const filteredServices = selectedCategory === 'all' ?
+    services :
+    services.filter(service => service.category === selectedCategory);
 
   return (
     <div className="bg-white dark:bg-gray-950 min-h-screen">
       <Header />
-      
+
       <AnimationEffect animationType="fadeIn" delay={100}>
         <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
           <div className="container mx-auto px-4">
@@ -242,8 +260,8 @@ export default function AllServices() {
               <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto ${
                 language === 'ar' ? 'font-arabic text-right' : ''
               }`}>
-                {language === 'ar' 
-                  ? 'نقدم مجموعة شاملة من الخدمات الرقمية المتطورة لتلبية جميع احتياجات أعمالك'
+                {language === 'ar'
+                  ? 'نقدم مجموعة شاملة من الخدمات الرقمية المتطورة لتلبية جميع احتياجات أعمالك.' // Added period
                   : 'We offer a comprehensive range of advanced digital services to meet all your business needs'
                 }
               </p>
@@ -265,8 +283,8 @@ export default function AllServices() {
                   className={`px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${
                     language === 'ar' ? 'font-arabic' : ''
                   } ${
-                    selectedCategory === category.id 
-                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg' 
+                    selectedCategory === category.id
+                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
                       : 'hover:bg-primary/10'
                   }`}
                 >
@@ -285,17 +303,17 @@ export default function AllServices() {
                         {service.icon}
                       </div>
                     </div>
-                    
+
                     <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
                       {service.title}
                     </h3>
-                    
+
                     <p className={`text-gray-600 dark:text-gray-300 mb-6 flex-grow ${
                       language === 'ar' ? 'font-arabic text-right leading-relaxed' : ''
                     }`}>
                       {service.description}
                     </p>
-                    
+
                     <div className="space-y-2 mb-6">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
@@ -310,8 +328,8 @@ export default function AllServices() {
                         </div>
                       ))}
                     </div>
-                    
-                    <Button 
+
+                    <Button
                       className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 ${
                         language === 'ar' ? 'font-arabic' : ''
                       }`}

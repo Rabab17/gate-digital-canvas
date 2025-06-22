@@ -31,37 +31,45 @@ export default function TestimonialsSection() {
     {
       id: 1,
       quote:
-        "E-Business Gate transformed our outdated website into a modern sales machine that drives consistent leads. Their expertise in web design and SEO has been a game-changer for our online presence.",
+        language === 'ar'
+          ? "لقد حولت بوابة الأعمال الإلكترونية موقعنا القديم إلى آلة مبيعات حديثة تجلب عملاء محتملين باستمرار. خبرتهم في تصميم الويب وتحسين محركات البحث غيَّرت قواعد اللعبة في حضورنا عبر الإنترنت."
+          : "E-Business Gate transformed our outdated website into a modern sales machine that drives consistent leads. Their expertise in web design and SEO has been a game-changer for our online presence.",
       name: "Ahmed Hosam (أحمد حسام)",
-      position: "مدير تسويق", // ستبقى هذه بالعربية
-      company: "شركة النيل للتكنولوجيا", // ستبقى هذه بالعربية
+      position: language === 'ar' ? "مدير تسويق" : "Marketing Manager", // يجب أن تكون مترجمة هنا أيضًا
+      company: language === 'ar' ? "شركة النيل للتكنولوجيا" : "Nile Technology Company", // يجب أن تكون مترجمة هنا أيضًا
       // image: "https://via.placeholder.com/100x100?text=AH", // أزيلي هذا السطر إذا لم تريدي أي صور
     },
     {
       id: 2,
       quote:
-        "Working with the E-Business Gate team was seamless. Their mobile app development service helped us launch a successful product that exceeded our users' expectations.",
+        language === 'ar'
+          ? "العمل مع فريق بوابة الأعمال الإلكترونية كان سلسًا للغاية. لقد ساعدتنا خدمة تطوير تطبيقات الهاتف المحمول لديهم في إطلاق منتج ناجح فاق توقعات مستخدمينا."
+          : "Working with the E-Business Gate team was seamless. Their mobile app development service helped us launch a successful product that exceeded our users' expectations.",
       name: "Fatma Ali (فاطمة علي)",
-      position: "مدير مشروع",
-      company: "حلول الأفق الرقمي",
+      position: language === 'ar' ? "مدير مشروع" : "Project Manager", // يجب أن تكون مترجمة هنا أيضًا
+      company: language === 'ar' ? "حلول الأفق الرقمي" : "Digital Horizon Solutions", // يجب أن تكون مترجمة هنا أيضًا
       // image: "https://via.placeholder.com/100x100?text=FA",
     },
     {
       id: 3,
       quote:
-        "Our digital marketing campaigns have seen a 300% increase in ROI since partnering with E-Business Gate. Their strategic approach to content and SEO is unmatched in the industry.",
+        language === 'ar'
+          ? "شهدت حملاتنا التسويقية الرقمية زيادة بنسبة 300% في عائد الاستثمار منذ شراكتنا مع بوابة الأعمال الإلكترونية. نهجهم الاستراتيجي للمحتوى وتحسين محركات البحث لا يُضاهى في الصناعة."
+          : "Our digital marketing campaigns have seen a 300% increase in ROI since partnering with E-Business Gate. Their strategic approach to content and SEO is unmatched in the industry.",
       name: "Mohamed El-Sayed (محمد السيد)",
-      position: "الرئيس التنفيذي",
-      company: "شركات النمو الرقمي",
+      position: language === 'ar' ? "الرئيس التنفيذي" : "CEO", // يجب أن تكون مترجمة هنا أيضًا
+      company: language === 'ar' ? "شركات النمو الرقمي" : "Digital Growth Companies", // يجب أن تكون مترجمة هنا أيضًا
       // image: "https://via.placeholder.com/100x100?text=MS",
     },
     {
       id: 4,
       quote:
-        "The rebranding project E-Business Gate delivered has completely revitalized our company's image. We've received countless compliments on our new visual identity.",
+        language === 'ar'
+          ? "مشروع إعادة تسمية العلامة التجارية الذي قدمته بوابة الأعمال الإلكترونية قد أحدث ثورة كاملة في صورة شركتنا. لقد تلقينا عددًا لا يحصى من الإشادات بهويتنا البصرية الجديدة."
+          : "The rebranding project E-Business Gate delivered has completely revitalized our company's image. We've received countless compliments on our new visual identity.",
       name: "Nour Gamil (نور جميل)",
-      position: "مدير إبداعي",
-      company: "وكالة الإبداع المصري",
+      position: language === 'ar' ? "مدير إبداعي" : "Creative Director", // يجب أن تكون مترجمة هنا أيضًا
+      company: language === 'ar' ? "وكالة الإبداع المصري" : "Egyptian Creative Agency", // يجب أن تكون مترجمة هنا أيضًا
       // image: "https://via.placeholder.com/100x100?text=NG",
     },
   ];
@@ -132,9 +140,9 @@ export default function TestimonialsSection() {
                         {/* الخيار 2: استخدام أيقونة عامة (مثل أيقونة شخص) بدلاً من الصور */}
                         {/* <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-3 flex items-center justify-center">
                               <UserCircleIcon className="w-full h-full text-gray-400 dark:text-gray-500" />
-                          </div> */}
+                            </div> */}
                         <h4 className={`font-bold text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
-                          {getLocalizedName(testimonial.name, language)} {/* <--- التغيير هنا */}
+                          {getLocalizedName(testimonial.name, language)}
                         </h4>
                         <p className={`text-sm text-gray-600 dark:text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
                           {testimonial.position}, {testimonial.company}

@@ -10,8 +10,8 @@ import logo1 from "../assets/الامراء-للسجاد.png"; // تأكد من 
 import logo2 from "../assets/لوجو الحرمين.png";   // تأكد من المسار الصحيح
 import logo3 from "../assets/لوجو روزي كاربت.jpg"; // تأكد من المسار الصحيح
 import logo4 from "../assets/Hardees-Logo-2006.png"; // تأكد من المسار الصحيح
-import logo5 from "../assets/Americana.png";    // تأكد من المسار الصحيح
-import logo6 from "../assets/dc.png";           // تأكد من المسار الصحيح
+import logo5 from "../assets/Americana.png";     // تأكد من المسار الصحيح
+import logo6 from "../assets/dc.png";       // تأكد من المسار الصحيح
 import logo7 from "../assets/masar logo - 2 (2).png"; // تأكد من المسار الصحيح
 import logo8 from "../assets/لوجو ميرميد.png";   // تأكد من المسار الصحيح
 
@@ -31,7 +31,7 @@ export default function AllClients() {
 
   const clients = [
     // تم إضافة الصور الفعلية هنا
-    { name: "الامراء للسجاد", logo: logo1, category: "fashion", description: language === 'ar' ? 'شركة رائدة في صناعة السجاد والمفروشات.' : 'Leading company in carpets and furnishings.' },
+    { name: "الأمراء للسجاد", logo: logo1, category: "fashion", description: language === 'ar' ? 'شركة رائدة في صناعة السجاد والمفروشات.' : 'Leading company in carpets and furnishings.' },
     { name: "الحرمين", logo: logo2, category: "restaurants", description: language === 'ar' ? 'مطاعم متخصصة في المأكولات الشرقية.' : 'Restaurants specializing in oriental cuisine.' },
     { name: "روزي كاربت", logo: logo3, category: "fashion", description: language === 'ar' ? 'علامة تجارية للسجاد الفاخر والتصميمات الحديثة.' : 'Luxury carpet brand with modern designs.' },
     { name: "Hardees", logo: logo4, category: "restaurants", description: language === 'ar' ? 'سلسلة مطاعم وجبات سريعة عالمية.' : 'Global fast-food restaurant chain.' },
@@ -44,14 +44,14 @@ export default function AllClients() {
     // إذا كان لديك عملاء آخرون، تأكد من استيراد صورهم أولاً ثم إضافتهم هنا
   ];
 
-  const filteredClients = selectedCategory === 'all' 
-    ? clients 
+  const filteredClients = selectedCategory === 'all'
+    ? clients
     : clients.filter(client => client.category === selectedCategory);
 
   return (
     <div className="bg-white dark:bg-gray-950 min-h-screen">
       <Header />
-      
+
       <AnimationEffect animationType="fadeIn" delay={100}>
         <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
           <div className="container mx-auto px-4">
@@ -64,8 +64,8 @@ export default function AllClients() {
               <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto ${
                 language === 'ar' ? 'font-arabic text-right' : ''
               }`}>
-                {language === 'ar' 
-                  ? 'موثوق بنا من قبل الشركات الرائدة في مختلف الصناعات حول العالم'
+                {language === 'ar'
+                  ? 'موثوق بنا من قبل الشركات الرائدة في مختلف الصناعات حول العالم.'
                   : 'Trusted by leading companies across various industries worldwide'
                 }
               </p>
@@ -87,8 +87,8 @@ export default function AllClients() {
                   className={`px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${
                     language === 'ar' ? 'font-arabic' : ''
                   } ${
-                    selectedCategory === category.id 
-                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg' 
+                    selectedCategory === category.id
+                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
                       : 'hover:bg-primary/10'
                   }`}
                 >
@@ -132,7 +132,7 @@ export default function AllClients() {
             {filteredClients.length === 0 && (
               <div className="text-center py-16">
                 <p className={`text-gray-500 text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
-                  {language === 'ar' ? 'لا توجد عملاء في هذه الفئة' : 'No clients found in this category'}
+                  {language === 'ar' ? 'لا يوجد عملاء في هذه الفئة.' : 'No clients found in this category'}
                 </p>
               </div>
             )}

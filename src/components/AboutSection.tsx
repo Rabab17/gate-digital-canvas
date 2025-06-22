@@ -45,33 +45,83 @@ export default function AboutSection() {
               {t('about.values.title')}
             </h3>
             <ul className="mb-8 space-y-2">
-              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                  {t('about.values.excellence')}
-                </span>
-              </li>
-              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                  {t('about.values.innovation')}
-                </span>
-              </li>
-              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                  {t('about.values.integrity')}
-                </span>
-              </li>
-              <li className={`flex items-start ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                <span className={`text-primary ${language === 'ar' ? 'ml-2' : 'mr-2'}`}>✓</span>
-                <span className={language === 'ar' ? 'font-arabic text-right' : ''}>
-                  {t('about.values.collaboration')}
-                </span>
-              </li>
-            </ul>
-            
-            <Link to="/about">
+  {/* التميز / Excellence */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.excellence')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.excellence')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* الابتكار / Innovation */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.innovation')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.innovation')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* النزاهة / Integrity */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.integrity')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.integrity')}
+        </span>
+      </>
+    )}
+  </li>
+
+  {/* التعاون / Collaboration */}
+  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
+    {language === 'ar' ? (
+      <>
+        <span className="text-right leading-relaxed">
+          {t('about.values.collaboration')}
+        </span>
+        <span className="text-primary mr-2">✓</span>
+      </>
+    ) : (
+      <>
+        <span className="text-primary mr-2">✓</span>
+        <span>
+          {t('about.values.collaboration')}
+        </span>
+      </>
+    )}
+  </li>
+</ul>
+     <Link to="/about">
               <Button className={`btn-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
                 {t('about.learnMore')}
               </Button>

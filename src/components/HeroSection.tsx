@@ -90,7 +90,7 @@ export default function HeroSection() {
         <div className="mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
           <span className="inline-block bg-gradient-to-r from-accent to-yellow-400 text-gray-900 px-6 py-2 rounded-full text-sm font-bold tracking-wide">
             {language === "ar"
-              ? "شركة رائدة في التقنيات الرقمية"
+              ? "شركة رائدة في الابتكار الرقمي" // Changed for conciseness and better flow
               : "Leading Digital Innovation Company"}
           </span>
         </div>
@@ -103,7 +103,7 @@ export default function HeroSection() {
         >
           {language === "ar" ? (
             <>
-              <span className="block text-accent mb-2">بوابة الاعمال الالكترونية</span>
+              <span className="block text-accent mb-2">بوابة الأعمال الإلكترونية</span> {/* Added hamza */}
               <span className="block bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 تمكين الشركات من خلال الابتكار الرقمي
               </span>
@@ -138,7 +138,7 @@ export default function HeroSection() {
             className="group shimmer-button bg-accent hover:bg-yellow-400 text-gray-900 font-bold px-8 py-6 text-lg rounded-full animate-fade-in-up transition-all duration-300 hover:scale-105 hover:shadow-2xl transform-gpu min-w-[200px]"
             style={{ animationDelay: "0.7s" }}
           >
-            {language === "ar" ? "طلب خدمة" : t("hero.cta")}
+            {language === "ar" ? "اطلب خدمة الآن" : t("hero.cta")} {/* Added "الآن" for better flow */}
             <ArrowRight
               className={`w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 ${
                 language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""
@@ -169,13 +169,13 @@ export default function HeroSection() {
           {[
             {
               icon: "🚀",
-              title: language === "ar" ? "نمو سريع" : "Fast Growth",
-              desc: language === "ar" ? "300% زيادة في الأداء" : "300% Performance Boost",
+              title: language === "ar" ? "نمو متسارع" : "Fast Growth", // Changed for better flow
+              desc: language === "ar" ? "زيادة في الأداء بنسبة 300%" : "300% Performance Boost", // Rephrased
             },
             {
               icon: "🎯",
-              title: language === "ar" ? "دقة عالية" : "Precision",
-              desc: language === "ar" ? "حلول مخصصة لكل عميل" : "Tailored Solutions",
+              title: language === "ar" ? "دقة متناهية" : "Precision", // Changed for emphasis
+              desc: language === "ar" ? "حلول مصممة خصيصًا لكل عميل" : "Tailored Solutions", // Rephrased
             },
             {
               icon: "🏆",
@@ -200,7 +200,7 @@ export default function HeroSection() {
         </div>
 
         {/* Enhanced scroll indicator with bounce */}
-       {/* <div className="absolute bottom-11 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+        {/* <div className="absolute bottom-11 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
           <div className="pulse-icon cursor-pointer pt-6" onClick={scrollToServices}>
             <div className="w-12 h-12 rounded-full border-2 border-accent flex items-center justify-center bg-white/10 backdrop-blur-sm hover:bg-accent hover:text-gray-900 transition-all duration-300">
               <svg

@@ -20,7 +20,7 @@ const translations = {
     'nav.clients': 'Clients',
     'nav.testimonials': 'Testimonials',
     'nav.contact': 'Contact',
-    'Start Project':'Start Project',
+    'Start Project': 'Start Project',
 
     // Hero Section
     'hero.title': 'E-Business Gate - Empowering Businesses through Digital Innovation',
@@ -117,10 +117,9 @@ const translations = {
 
 
     //////////// Form
-    'contact.message':"message",
-    "contact.name":"name",
-    "contact.send":"send",
-
+    'contact.message': "Message",
+    "contact.name": "Name",
+    "contact.send": "Send",
 
 
     // Footer
@@ -146,8 +145,8 @@ const translations = {
     'nav.portfolio': 'أعمالنا',
     'nav.clients': 'عملاؤنا',
     'nav.testimonials': 'آراء العملاء',
-    'nav.contact': 'اتصل بنا',
-      'Start Project':'أبداء مشروعك',
+    'nav.contact': 'تواصل معنا',
+    'Start Project': 'ابدأ مشروعك',
 
     // Hero Section
     'hero.title': 'بوابة **الأعمال الإلكترونية** - تمكين الشركات من خلال الابتكار الرقمي',
@@ -157,9 +156,9 @@ const translations = {
     // About Section
     'about.title': 'من نحن',
     'about.vision.title': 'رؤيتنا',
-    'about.vision.description': 'في **إي-بيزنس جيت**، نتصور عالماً حيث يمكن للشركات من جميع الأحجام الاستفادة من الإمكانات الكاملة للتقنيات الرقمية. نحن ملتزمون بتقديم حلول رقمية مبتكرة وقابلة للتطوير ومؤثرة تدفع النمو والتحول.',
+    'about.vision.description': 'فى شركة بوابة الأعمال الإلكترونية، نتصور عالمًا حيث يمكن للشركات من جميع الأحجام الاستفادة من الإمكانات الكاملة للتقنيات الرقمية. نحن ملتزمون بتقديم حلول رقمية مبتكرة وقابلة للتطوير ومؤثرة تدفع النمو والتحول.',
     'about.mission.title': 'مهمتنا',
-    'about.mission.description': 'نحن **نمكّن** الشركات من خلال الابتكار الرقمي المتطور والإرشاد المتخصص والاستراتيجيات المصممة خصيصاً التي تحقق نتائج قابلة للقياس. نهجنا التعاوني يضمن فهمنا **لتحدياتكم** الفريدة وتقديم حلول تتجاوز التوقعات.',
+    'about.mission.description': 'نحن **نمكّن** الشركات من خلال الابتكار الرقمي المتطور والإرشاد المتخصص والاستراتيجيات المصممة خصيصًا التي تحقق نتائج قابلة للقياس. نهجنا التعاوني يضمن فهمنا **لتحدياتكم** الفريدة وتقديم حلول تتجاوز التوقعات.',
     'about.values.title': 'قيمنا',
     'about.values.excellence': 'التميز - نسعى لتحقيق أعلى جودة في كل ما نقوم به.',
     'about.values.innovation': 'الابتكار - نتبنى التقنيات الجديدة والحلول الإبداعية',
@@ -179,7 +178,7 @@ const translations = {
     'services.mobileApp.title': 'تطوير تطبيقات **الهاتف المحمول**',
     'services.mobileApp.description': 'تطبيقات هواتف محمولة مبتكرة، أصلية ومتعددة المنصات، مصممة لتعزيز **التفاعل** وتبسيط العمليات.',
     'services.branding.title': 'العلامة التجارية والهوية البصرية',
-    'services.branding.description': 'حلول شاملة للعلامة التجارية تؤسس حضوراً سوقياً قوياً وتعزز الروابط الدائمة مع العملاء.',
+    'services.branding.description': 'حلول شاملة للعلامة التجارية تؤسس حضورًا سوقيًا قويًا وتعزز الروابط الدائمة مع العملاء.',
     'services.erp.title': 'حلول تخطيط موارد المؤسسات (ERP) والحوسبة السحابية',
     'services.erp.description': 'حلول مؤسسية قابلة للتطوير وخدمات سحابية **تحدّث** العمليات وتعزز كفاءة الأعمال.',
     'services.exploreAll': 'استكشف جميع الخدمات',
@@ -242,9 +241,9 @@ const translations = {
     'contactForm.submissionError': 'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.',
     'contactForm.sending': 'جاري الإرسال...',
     //////////// form
-    'contact.message':"رساله",
-    "contact.name":"الاسم",
-    "contact.send":"ارسال",
+    'contact.message': "الرسالة",
+    "contact.name": "الاسم",
+    "contact.send": "إرسال",
 
     // Footer
     'footer.description': 'تمكين الشركات من خلال الابتكار الرقمي منذ عام 2010. نحن نقدم حلولاً رقمية شاملة لمساعدة أعمالك على الازدهار في العالم الرقمي.',
