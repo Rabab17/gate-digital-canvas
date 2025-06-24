@@ -3,6 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimationEffect from "@/components/AnimationEffect";
+ import { Link } from 'react-router-dom';
 import {
   Button
 } from "@/components/ui/button";
@@ -329,13 +330,18 @@ export default function AllServices() {
                       ))}
                     </div>
 
-                    <Button
-                      className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 ${
-                        language === 'ar' ? 'font-arabic' : ''
-                      }`}
-                    >
-                      {language === 'ar' ? 'طلب معلومات أكثر' : 'Request More Info'}
-                    </Button>
+                  
+
+
+<Link to="/ContactUs">
+  <Button
+    className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 ${
+      language === 'ar' ? 'font-arabic' : ''
+    }`}
+  >
+    {language === 'ar' ? 'طلب معلومات أكثر' : 'Request More Info'}
+  </Button>
+</Link>
                   </div>
                 </AnimationEffect>
               ))}
