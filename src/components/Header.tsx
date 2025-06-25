@@ -112,34 +112,42 @@ export default function Header() {
         {/* قائمة التنقل لسطح المكتب */}
         <nav className="hidden lg:flex items-center gap-6">
           <ul className={`flex ${language === "ar" ? "flex-row-reverse" : ""} gap-1`}>
-            {navItems.map((item, index) => (
-              <li key={item.key} className="relative group">
-                {item.isExternal ? (
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href, true);
-                    }}
-                    className={`px-4 py-2 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group`}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                  </a>
-                ) : (
-                  <Link
-                    to={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:text-primary hover:bg-primary/10 transition-all duration-300 relative group`}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                )}
-              </li>
-            ))}
+            {navItems.map((item, index) => {
+              const isActive = (!item.isExternal && location.pathname === item.href) ||
+                (item.isExternal && item.href.startsWith('/#') && location.hash === item.href.replace('/',''));
+              return (
+                <li key={item.key} className="relative group">
+                  {item.isExternal ? (
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.href, true);
+                      }}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group
+                        ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                        hover:text-primary hover:bg-primary/10`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      {item.label}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group
+                        ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                        hover:text-primary hover:bg-primary/10`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      {item.label}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           {/* العناصر المساعدة */}
@@ -180,44 +188,52 @@ export default function Header() {
         } bg-white shadow-xl border-t border-gray-200`}
       >
         <ul className="px-4 py-6 space-y-2">
-          {navItems.map((item, index) => (
-            <li key={item.key}>
-              {item.isExternal ? (
-                <a
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href, true);
-                  }}
-                  className={`block px-4 py-3 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:bg-primary/10 hover:text-primary transition-all duration-300`}
-                  style={{
-                    animationDelay: `${index * 50}ms`,
-                    transform: mobileMenuOpen
-                      ? "translateX(0)"
-                      : `translateX(${language === "ar" ? "20px" : "-20px"})`,
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-medium ${!scrolled ? "text-[#D4AF37]" : "text-gray-700 dark:text-gray-300"} hover:bg-primary/10 hover:text-primary transition-all duration-300`}
-                  style={{
-                    animationDelay: `${index * 50}ms`,
-                    transform: mobileMenuOpen
-                      ? "translateX(0)"
-                      : `translateX(${language === "ar" ? "20px" : "-20px"})`,
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {item.label}
-                </Link>
-              )}
-            </li>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = (!item.isExternal && location.pathname === item.href) ||
+              (item.isExternal && item.href.startsWith('/#') && location.hash === item.href.replace('/',''));
+            return (
+              <li key={item.key}>
+                {item.isExternal ? (
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href, true);
+                    }}
+                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
+                      ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                      hover:bg-primary/10 hover:text-primary`}
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      transform: mobileMenuOpen
+                        ? 'translateX(0)'
+                        : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
+                      ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                      hover:bg-primary/10 hover:text-primary`}
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      transform: mobileMenuOpen
+                        ? 'translateX(0)'
+                        : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
 
           <li className={`pt-4 border-t border-gray-200 dark:border-gray-700`}>
             <div className="flex items-center justify-center gap-4 mb-4">

@@ -86,7 +86,7 @@ const translations = {
     'contact.title': 'Get In Touch',
     'contact.subtitle': 'Ready to start your digital transformation?',
     'contact.getInTouch': 'Stay Connected',
-    'contact.description': 'Have a project in mind or want to learn more about our services? We’re happy to connect with you. Please fill out the form or reach us directly via the contact information below.',
+    'contact.description': 'Have a project in mind or want to learn more about our services? We\'re happy to connect with you. Please fill out the form or reach us directly via the contact information below.',
     'contact.locations': 'Locations',
     'contact.egypt': 'Egypt',
     'contact.fayoumCairo': 'Fayoum / Cairo',
@@ -263,16 +263,15 @@ const translations = {
 };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('language');
+    return (saved === 'ar' || saved === 'en') ? saved : 'en';
+  });
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-      setLanguage(savedLanguage);
-      document.documentElement.setAttribute('lang', savedLanguage);
-      document.documentElement.setAttribute('dir', savedLanguage === 'ar' ? 'rtl' : 'ltr');
-    }
-  }, []);
+    document.documentElement.setAttribute('lang', language);
+    document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);

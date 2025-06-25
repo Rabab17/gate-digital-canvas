@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t, language } = useLanguage();
@@ -59,7 +60,7 @@ export default function Footer() {
                   href="https://www.facebook.com/E.business.gate.companyfym/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="Facebook"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -71,7 +72,7 @@ export default function Footer() {
                   href="https://www.instagram.com/e_business_gate/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,7 +84,7 @@ export default function Footer() {
                   href="https://www.tiktok.com/@ebgebusinessgate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="TikTok"
                 >
                   <svg
@@ -101,7 +102,7 @@ export default function Footer() {
                   href="https://x.com/EbgGate27786"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="X"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -113,7 +114,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/ebgebusinessgate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -125,7 +126,7 @@ export default function Footer() {
                   href="https://www.behance.net/ebgebusinessgate"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors"
                   aria-label="Behance"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -140,7 +141,7 @@ export default function Footer() {
     href="https://wa.me/201050206655"
     target="_blank"
     rel="noopener noreferrer"
-    className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center hover:bg-green-600 hover:text-white transition-colors"
+    className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-green-500 hover:text-white transition-colors"
     aria-label="WhatsApp"
   >
 <svg
@@ -163,34 +164,34 @@ export default function Footer() {
             </h3>
             <ul className={`space-y-2 text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.digitalMarketing.title')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.seo.title')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.webDevelopment.title')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.mobileApp.title')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.branding.title')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:text-white transition-colors">
                   {t('services.erp.title')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -201,22 +202,22 @@ export default function Footer() {
             </h3>
             <ul className={`space-y-2 text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
               <li>
-                <a href="#home" className="hover:text-white transition-colors">{t('nav.home')}</a>
+                <Link to="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">{t('nav.about')}</a>
+                <Link to="/about" className="hover:text-white transition-colors">{t('nav.about')}</Link>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-white transition-colors">{t('nav.portfolio')}</a>
+                <Link to="/projects" className="hover:text-white transition-colors">{t('nav.portfolio')}</Link>
               </li>
               <li>
-                <a href="#clients" className="hover:text-white transition-colors">{t('nav.clients')}</a>
+                <Link to="/clients" className="hover:text-white transition-colors">{t('nav.clients')}</Link>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">{t('nav.testimonials')}</a>
+                <a href="/#testimonials" className="hover:text-white transition-colors">{t('nav.testimonials')}</a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">{t('nav.contact')}</a>
+                <Link to="/ContactUs" className="hover:text-white transition-colors">{t('nav.contact')}</Link>
               </li>
             </ul>
           </div>

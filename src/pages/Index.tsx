@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -13,7 +12,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import AnimationEffect from "@/components/AnimationEffect";
 import LoadingScreen from "@/components/LoadingScreen";
 import MouseTracker from "@/components/MouseTracker";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 
 
 const Index = () => {
@@ -41,7 +39,7 @@ const Index = () => {
   }, []);
 
   return (
-    <LanguageProvider>
+    <>
       <LoadingScreen />
       <MouseTracker />
       <div className="bg-white dark:bg-gray-950 min-h-screen transition-all duration-300">
@@ -76,7 +74,7 @@ const Index = () => {
         <Footer />
         <ScrollToTop />
       </div>
-    </LanguageProvider>
+    </>
   );
 };
 
