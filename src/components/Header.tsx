@@ -125,7 +125,8 @@ export default function Header() {
                         handleNavClick(item.href, true);
                       }}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group
-                        ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                        text-primary
+                        ${isActive ? 'font-bold bg-primary/10' : ''}
                         hover:text-primary hover:bg-primary/10`}
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
@@ -137,7 +138,8 @@ export default function Header() {
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group
-                        ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                        text-primary
+                        ${isActive ? 'font-bold bg-primary/10' : ''}
                         hover:text-primary hover:bg-primary/10`}
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
@@ -201,7 +203,8 @@ export default function Header() {
                       handleNavClick(item.href, true);
                     }}
                     className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
-                      ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                      text-primary
+                      ${isActive ? 'font-bold bg-primary/10' : ''}
                       hover:bg-primary/10 hover:text-primary`}
                     style={{
                       animationDelay: `${index * 50}ms`,
@@ -218,7 +221,8 @@ export default function Header() {
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
-                      ${isActive ? 'text-primary font-bold bg-primary/10' : (!scrolled ? 'text-[#D4AF37]' : 'text-gray-700 dark:text-gray-300')}
+                      text-primary
+                      ${isActive ? 'font-bold bg-primary/10' : ''}
                       hover:bg-primary/10 hover:text-primary`}
                     style={{
                       animationDelay: `${index * 50}ms`,
