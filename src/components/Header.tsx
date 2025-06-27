@@ -171,25 +171,26 @@ export default function Header() {
 
         {/* قائمة الجوال - تظهر على الجانب الأيمن دائما */}
         <div className="flex items-center gap-3 lg:hidden">
-          <ThemeToggle />
-          <LanguageToggle /> {/* تم استخدام LanguageToggle هنا أيضًا */}
+          <div className="pr-1"><ThemeToggle /></div>
+          <div className="pr-1"><LanguageToggle /></div>
           <button
-            className={`p-2 ${!scrolled ? "text-[#D4AF37]" : "text-gray-600 dark:text-gray-300"} transition-all duration-300 hover:scale-110 hover:bg-primary/10 rounded-lg`}
+            className={`p-3 md:p-4 ml-2 ${!scrolled ? "text-[#1F75FE]" : "text-gray-600 dark:text-gray-300"} transition-all duration-300 hover:scale-110 hover:bg-primary/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
           </button>
         </div>
       </div>
 
       {/* قائمة الجوال */}
       <div
-        className={`lg:hidden transition-all duration-500 overflow-hidden ${
+        className={`lg:hidden fixed top-[64px] left-0 w-full z-40 transition-all duration-500 overflow-hidden ${
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         } bg-white shadow-xl border-t border-gray-200`}
+        style={{ minHeight: mobileMenuOpen ? 'calc(100vh - 64px)' : 0 }}
       >
-        <ul className="px-4 py-6 space-y-2">
+        <ul className="px-4 py-8 space-y-4 text-lg">
           {navItems.map((item, index) => {
             const isActive = (!item.isExternal && location.pathname === item.href) ||
               (item.isExternal && item.href.startsWith('/#') && location.hash === item.href.replace('/',''));
@@ -202,16 +203,14 @@ export default function Header() {
                       e.preventDefault();
                       handleNavClick(item.href, true);
                     }}
-                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
+                    className={`block px-6 py-4 rounded-lg font-medium transition-all duration-300
                       text-primary
                       ${isActive ? 'font-bold bg-primary/10' : ''}
                       hover:bg-primary/10 hover:text-primary`}
                     style={{
                       animationDelay: `${index * 50}ms`,
-                      transform: mobileMenuOpen
-                        ? 'translateX(0)'
-                        : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
-                      transition: 'all 0.3s ease',
+                      fontSize: '1.15rem',
+                      letterSpacing: '0.01em',
                     }}
                   >
                     {item.label}
@@ -220,16 +219,14 @@ export default function Header() {
                   <Link
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300
+                    className={`block px-6 py-4 rounded-lg font-medium transition-all duration-300
                       text-primary
                       ${isActive ? 'font-bold bg-primary/10' : ''}
                       hover:bg-primary/10 hover:text-primary`}
                     style={{
                       animationDelay: `${index * 50}ms`,
-                      transform: mobileMenuOpen
-                        ? 'translateX(0)'
-                        : `translateX(${language === 'ar' ? '20px' : '-20px'})`,
-                      transition: 'all 0.3s ease',
+                      fontSize: '1.15rem',
+                      letterSpacing: '0.01em',
                     }}
                   >
                     {item.label}

@@ -137,7 +137,7 @@ export default function ContactSection() {
     href="https://wa.me/201050206655"
     target="_blank"
     rel="noopener noreferrer"
-    className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center hover:bg-green-600 hover:text-white transition-colors"
+    className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
     aria-label="WhatsApp"
   >
 <svg
