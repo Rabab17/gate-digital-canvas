@@ -11,35 +11,11 @@ export default function AboutUs() {
 
   const teamMembers = [
     {
-      name: language === 'ar' ? 'أحمد إبراهيم' : 'Ahmed Ibrahim',
-      position: language === 'ar' ? 'المدير العام والمؤسس' : 'CEO & Founder',
+      name: language === 'ar' ? 'م. محمد المهدي' : 'Mohamed El-Mahdi',
+      position: language === 'ar' ? 'المدير التنفيذي' : 'CEO',
       bio: language === 'ar'
-        ? 'خبير في التقنيات الرقمية مع أكثر من 15 عامًا من الخبرة في قيادة المشاريع التقنية المعقدة.'
-        : 'Digital technology expert with over 15 years of experience leading complex tech projects.',
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        email: 'ahmed@ebusinessgate.com'
-      }
-    },
-    {
-      name: language === 'ar' ? 'ليلى محمود' : 'Laila Mahmoud',
-      position: language === 'ar' ? 'المديرة التقنية' : 'CTO',
-      bio: language === 'ar'
-        ? 'مهندسة برمجيات متخصصة في تطوير التطبيقات المتطورة والحلول السحابية.'
-        : 'Software engineer specializing in advanced application development and cloud solutions.',
-      social: {
-        linkedin: '#',
-        github: '#',
-        email: 'sarah@ebusinessgate.com'
-      }
-    },
-    {
-      name: language === 'ar' ? 'حسن السيد' : 'Hassan El-Sayed',
-      position: language === 'ar' ? 'مدير التسويق' : 'Marketing Director',
-      bio: language === 'ar'
-        ? 'خبير في استراتيجيات التسويق الرقمي وإدارة العلامات التجارية.'
-        : 'Expert in digital marketing strategies and brand management.',
+        ? 'يقود شركتنا برؤية استراتيجية وخبرة واسعة في إدارة الأعمال وتطوير المشاريع الرقمية.'
+        : 'Leads our company with strategic vision and extensive experience in business management and digital project development.',
       social: {
         linkedin: '#',
         twitter: '#',
@@ -47,17 +23,101 @@ export default function AboutUs() {
       }
     },
     {
-      name: language === 'ar' ? 'أميرة خالد' : 'Amira Khaled',
-      position: language === 'ar' ? 'المديرة الإبداعية' : 'Creative Director',
+      name: language === 'ar' ? 'أ. أحمد المهدي' : 'Ahmed El-Mahdi',
+      position: language === 'ar' ? 'مؤسس مشارك' : 'Co-Founder',
       bio: language === 'ar'
-        ? 'مصممة مبدعة متخصصة في تجربة المستخدم والهوية البصرية.'
-        : 'Creative designer specializing in user experience and visual identity.',
+        ? 'مؤسس مشارك يساهم في نمو الشركة وتطويرها من خلال خبرته العميقة في السوق.'
+        : 'A co-founder contributing to the company\'s growth and development with his deep market expertise.',
+      social: {
+        linkedin: '#',
+        github: '#',
+        email: 'ahmed@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'م. ممدوح الناجي' : 'Mamdouh El-Nagy',
+      position: language === 'ar' ? 'مدير العمليات' : 'Operations Manager',
+      bio: language === 'ar'
+        ? 'يتولى إدارة العمليات اليومية لضمان سلاسة سير العمل وتحقيق الكفاءة القصوى.'
+        : 'Manages daily operations to ensure smooth workflow and maximum efficiency.',
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'fatima@ebusinessgate.com'
+        email: 'mamdouh@ebusinessgate.com'
       }
-    }
+    },
+    {
+      name: language === 'ar' ? 'أ. ناهد الطلاوي' : 'Nahed El-Tallawy',
+      position: language === 'ar' ? 'مديرة التسويق' : 'Marketing Manager',
+      bio: language === 'ar'
+        ? 'خبيرة في استراتيجيات التسويق الرقمي وتطوير العلامات التجارية.'
+        : 'An expert in digital marketing strategies and brand development.',
+      social: {
+        linkedin: '#',
+        twitter: '#',
+        email: 'nahed@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'ا. محمود أبو الليل' : 'Mahmoud Aboul-Leil',
+      position: language === 'ar' ? 'مدير التعاقدات' : 'Contracting Manager',
+      bio: language === 'ar'
+        ? 'يدير جميع جوانب التعاقدات لضمان أفضل الشراكات والاتفاقيات.'
+        : 'Manages all aspects of contracting to ensure the best partnerships and agreements.',
+      social: {
+        linkedin: '#',
+        twitter: '#',
+        email: 'mahmoud@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'أ. سعد المصري' : 'Saad El-Masry',
+      position: language === 'ar' ? 'مدير قسم التصوير' : 'Director of Photography Department',
+      bio: language === 'ar'
+        ? 'يقود فريق التصوير لتقديم محتوى بصري عالي الجودة لعملائنا.'
+        : 'Leads the photography team to deliver high-quality visual content for our clients.',
+      social: {
+        linkedin: '#',
+        twitter: '#',
+        email: 'saad@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'م. أحمد محمود' : 'Ahmed Mahmoud',
+      position: language === 'ar' ? 'مدير التطوير' : 'Development Manager',
+      bio: language === 'ar'
+        ? 'يشرف على فريق التطوير لتقديم حلول تقنية متقدمة ومبتكرة.'
+        : 'Oversees the development team to deliver advanced and innovative technical solutions.',
+      social: {
+        linkedin: '#',
+        github: '#',
+        email: 'ahmed.m@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'م. عبدالرحمن وليد' : 'Abdelrahman Walid',
+      position: language === 'ar' ? 'مدير فني ورئيس فريق الجرافيك' : 'Art Director and Graphic Team Lead',
+      bio: language === 'ar'
+        ? 'يقود الرؤية الإبداعية ويشرف على تصميماتنا البصرية لضمان أعلى مستوى من الجودة.'
+        : 'Leads the creative vision and oversees our visual designs to ensure the highest quality.',
+      social: {
+        linkedin: '#',
+        github: '#',
+        email: 'abdelrahman@ebusinessgate.com'
+      }
+    },
+    {
+      name: language === 'ar' ? 'ا. حنان صفوت' : 'Hanan Safwat',
+      position: language === 'ar' ? 'مساعدة المدير' : 'Assistant Manager',
+      bio: language === 'ar'
+        ? 'تقدم الدعم الإداري اللازم لضمان كفاءة العمليات اليومية.'
+        : 'Provides essential administrative support to ensure the efficiency of daily operations.',
+      social: {
+        linkedin: '#',
+        twitter: '#',
+        email: 'hanan@ebusinessgate.com'
+      }
+    },
   ];
 
   return (

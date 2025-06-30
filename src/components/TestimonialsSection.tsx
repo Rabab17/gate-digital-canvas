@@ -131,23 +131,15 @@ export default function TestimonialsSection() {
                         <div className="absolute -bottom-4 -right-4 w-10 h-10 text-5xl text-primary opacity-50 rotate-180">"</div>
                       </div>
 
-                      <div className="flex flex-col items-center mt-6">
-                        {/* هذا الجزء الخاص بالصورة أو الأيقونة. اختاري أحد الخيارين أدناه */}
-                        {/* الخيار 1: إزالة جزء الصورة بالكامل (كما طلب المستخدم سابقًا) */}
-                        {/* <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-3">
-                            </div> */}
+                      <div className="hidden md:block text-center">
+  <h4 className={`font-bold text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
+    {getLocalizedName(testimonial.name, language)}
+  </h4>
+  <p className={`text-sm text-gray-600 dark:text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
+    {testimonial.position}, {testimonial.company}
+  </p>
+</div>
 
-                        {/* الخيار 2: استخدام أيقونة عامة (مثل أيقونة شخص) بدلاً من الصور */}
-                        {/* <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary mb-3 flex items-center justify-center">
-                              <UserCircleIcon className="w-full h-full text-gray-400 dark:text-gray-500" />
-                            </div> */}
-                        <h4 className={`font-bold text-lg ${language === 'ar' ? 'font-arabic' : ''}`}>
-                          {getLocalizedName(testimonial.name, language)}
-                        </h4>
-                        <p className={`text-sm text-gray-600 dark:text-gray-400 ${language === 'ar' ? 'font-arabic' : ''}`}>
-                          {testimonial.position}, {testimonial.company}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>

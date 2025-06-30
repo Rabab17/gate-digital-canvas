@@ -84,6 +84,14 @@ export default function HeroSection() {
       <div
         className={`container mx-auto px-4 z-20 text-center text-white`}
       >
+        {/* Hero Main Image (logo or hero image) */}
+        {/* <img
+          src={logo}
+          alt="E-Business Gate Logo"
+          className="hero-main-image mx-auto mb-6"
+          style={{ width: '120px', height: 'auto' }}
+        /> */}
+
         <div className="slide-line mb-8"></div>
 
         {/* Company Logo/Badge */}
@@ -129,7 +137,7 @@ export default function HeroSection() {
 
         {/* Enhanced CTA Buttons */}
         <div
-          className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 ${
+          className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 cta-buttons-row ${
             language === "ar" ? "sm:flex-row-reverse" : ""
           }`}
         >

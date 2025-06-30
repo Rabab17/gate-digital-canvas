@@ -163,9 +163,9 @@ export default function ContactSection() {
         </div>
 
         <div className="mt-12 h-80 rounded-lg overflow-hidden">
-          <iframe
+        <iframe
             title="Google Map Location"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3455.683841430101!2d30.85899!3d29.309047!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xeb5f916e5fc939b9!2z2YXYs9in2YUg2KfZhNin2YTZiNmE2YrYqSDYp9mE2KrZiNmF2KzZitip!5e0!3m2!1sar!2seg!4v1716989231809!5m2!1sar!2seg"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.683841430101!2d31.2074709!3d30.0401836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xeb5f916e5fc939b9!2z2YXYs9in2YUg2KfZhNin2YTZiNmE2YrYqSDYp9mE2KrZiNmF2KzZitip!5e0!3m2!1sar!2seg!4v1716989231809!5m2!1sar!2seg"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -173,6 +173,8 @@ export default function ContactSection() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+
+        
         </div>
       </div>
     </section>

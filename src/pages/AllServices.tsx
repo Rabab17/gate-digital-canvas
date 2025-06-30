@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimationEffect from "@/components/AnimationEffect";
- import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Button
 } from "@/components/ui/button";
@@ -25,12 +25,127 @@ import {
   Zap,
   TrendingUp
 } from "lucide-react";
+import React from "react";
+
+// أنماط CSS المخصصة للحفاظ على التصميم والترتيب، مع إزالة الألوان المحددة
+const customStyles = `
+  .arabic-font {
+    font-family: 'Tajawal', 'Segoe UI', sans-serif !important;
+  }
+  
+  .arabic-text {
+    text-align: right !important;
+    direction: rtl !important;
+    unicode-bidi: embed !important;
+  }
+  
+  .arabic-feature-item {
+    flex-direction: row-reverse !important;
+    justify-content: flex-start !important;
+  }
+  
+  .arabic-button {
+    font-family: 'Tajawal', 'Segoe UI', sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+  
+  .service-card {
+    border: 1px solid; /* Will use Tailwind's border-color */
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-card:hover {
+    /* Removed hover effect */
+    transform: translateY(0px); /* Reset transform on hover */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* Keep original shadow or none */
+  }
+  
+  .service-icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Removed group-hover:scale-110 from service-icon-container */
+  /* Removed group-hover:text-accent from service-icon-container's child div */
+
+  .service-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  
+  .service-description {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  
+  .service-feature {
+    font-size: 0.8125rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .feature-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    margin-top: 0.4rem;
+  }
+  
+  .filter-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 9999px;
+    min-width: 6rem;
+    border: 1px solid; /* Will use Tailwind's border-color */
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    border: none;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .filter-container {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .filter-button {
+      min-width: 5.5rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8125rem;
+    }
+  }
+`;
 
 export default function AllServices() {
-  const {
-    language
-  } = useLanguage();
+  const { language, t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // No dark mode state or toggle function, using system/Tailwind defaults
 
   const categories = [
     {
@@ -246,109 +361,105 @@ export default function AllServices() {
     services.filter(service => service.category === selectedCategory);
 
   return (
-    <div className="bg-white dark:bg-gray-950 min-h-screen">
+    <div className="min-h-screen pt-20 md:pt-24 overflow-x-hidden bg-background dark:bg-dark-background"
+      dir={language === 'ar' ? 'rtl' : 'ltr'}>
+
+      {/* Inject custom styles for layout and Arabic font overrides */}
+      <style>{customStyles}</style>
+
       <Header />
 
-      <AnimationEffect animationType="fadeIn" delay={100}>
-        <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h1 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
-                language === 'ar' ? 'font-arabic' : ''
-              }`}>
-                {language === 'ar' ? 'خدماتنا' : 'Our Services'}
-              </h1>
-              <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto ${
-                language === 'ar' ? 'font-arabic text-right' : ''
-              }`}>
-                {language === 'ar'
-                  ? 'نقدم مجموعة شاملة من الخدمات الرقمية المتطورة لتلبية جميع احتياجات أعمالك.' // Added period
-                  : 'We offer a comprehensive range of advanced digital services to meet all your business needs'
-                }
-              </p>
-            </div>
+      {/* Hero Section */}
+      <section className="py-8 md:py-12 bg-background dark:bg-dark-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground dark:text-dark-foreground ${language === 'ar' ? 'arabic-font' : ''}`}>
+              {language === 'ar' ? 'خدماتنا المتكاملة' : 'Our Comprehensive Services'}
+            </h1>
+            {/* Adjusted text color for better readability in both modes */}
+            <p className={`text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-300 ${language === 'ar' ? 'arabic-font' : ''}`}>
+              {language === 'ar' ?
+                'نقدم مجموعة شاملة من الخدمات الرقمية المتطورة لتلبية جميع احتياجات أعمالك.' :
+                'We offer a comprehensive range of advanced digital services to meet all your business needs'}
+            </p>
           </div>
-        </section>
-      </AnimationEffect>
+        </div>
+      </section>
 
-      <AnimationEffect animationType="slideUp" delay={200}>
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  className={`px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${
-                    language === 'ar' ? 'font-arabic' : ''
-                  } ${
-                    selectedCategory === category.id
-                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
-                      : 'hover:bg-primary/10'
-                  }`}
-                >
-                  {category.name}
-                </Button>
-              ))}
-            </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12 filter-container">
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                variant={selectedCategory === category.id ? "default" : "outline"}
+                className={`filter-button px-6 py-3 rounded-full transition-all duration-300 ${
+                  language === 'ar' ? 'arabic-button' : ''
+                } ${
+                  selectedCategory === category.id
+                    ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
+                    : '' // Removed hover:bg-primary/10
+                }`}
+              >
+                {category.name}
+              </Button>
+            ))}
+          </div>
 
-            {/* Services Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredServices.map((service, index) => (
-                <AnimationEffect key={`${service.title}-${selectedCategory}`} animationType="scale" delay={index * 100}>
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group h-full flex flex-col">
-                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <div className="text-primary group-hover:text-accent transition-colors duration-300">
-                        {service.icon}
-                      </div>
-                    </div>
-
-                    <h3 className={`text-xl font-bold mb-4 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
-                      {service.title}
-                    </h3>
-
-                    <p className={`text-gray-600 dark:text-gray-300 mb-6 flex-grow ${
-                      language === 'ar' ? 'font-arabic text-right leading-relaxed' : ''
-                    }`}>
-                      {service.description}
-                    </p>
-
-                    <div className="space-y-2 mb-6">
-                      {service.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className={`flex items-center ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                          <div className={`w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full ${
-                            language === 'ar' ? 'ml-3' : 'mr-3'
-                          }`}></div>
-                          <span className={`text-sm text-gray-600 dark:text-gray-300 ${
-                            language === 'ar' ? 'font-arabic text-right' : ''
-                          }`}>
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                  
-
-
-<Link to="/ContactUs">
-  <Button
-    className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 ${
-      language === 'ar' ? 'font-arabic' : ''
-    }`}
-  >
-    {language === 'ar' ? 'طلب معلومات أكثر' : 'Request More Info'}
-  </Button>
-</Link>
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 service-grid">
+            {filteredServices.map((service, index) => (
+              <div
+                key={`${service.title}-${selectedCategory}`}
+                className="service-card bg-white dark:bg-gray-800 shadow-lg" // Removed hover:shadow-xl
+              >
+                <div className="service-icon-container bg-gradient-to-r from-primary/10 to-accent/10"> {/* Removed group-hover:scale-110 */}
+                  <div className="text-primary"> {/* Removed group-hover:text-accent */}
+                    {service.icon}
                   </div>
-                </AnimationEffect>
-              ))}
-            </div>
+                </div>
+
+                <h3 className={`service-title text-foreground dark:text-dark-foreground ${language === 'ar' ? 'arabic-font arabic-text' : ''}`}>
+                  {service.title}
+                </h3>
+
+                {/* Adjusted text color for better readability in both modes */}
+                <p className={`service-description text-gray-700 dark:text-gray-300 ${
+                  language === 'ar' ? 'font-arabic text-right leading-relaxed' : ''
+                }`}>
+                  {service.description}
+                </p>
+
+                <div className="space-y-2 mb-6">
+                  {service.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className={`flex items-start ${language === 'ar' ? 'arabic-feature-item' : ''}`}>
+                      <div className={`feature-dot bg-gradient-to-r from-primary to-accent ${
+                        language === 'ar' ? 'ml-3' : 'mr-3'
+                      }`}></div>
+                      {/* Adjusted text color for better readability in both modes */}
+                      <span className={`service-feature text-gray-700 dark:text-gray-300 ${
+                        language === 'ar' ? 'font-arabic text-right' : ''
+                      }`}>
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link to="/ContactUs">
+                  <Button
+                    className={`cta-button bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-medium transition-all duration-300 ${language === 'ar' ? 'arabic-button' : ''}`}
+                  >
+                    {language === 'ar' ? 'طلب معلومات أكثر' : 'Request More Info'}
+                  </Button>
+                </Link>
+              </div>
+            ))}
           </div>
-        </section>
-      </AnimationEffect>
+        </div>
+      </section>
 
       <Footer />
     </div>

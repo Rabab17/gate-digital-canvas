@@ -203,7 +203,7 @@ export default function AllProjects() {
         </section>
       </AnimationEffect>
 
-      <AnimationEffect animationType="slideUp" delay={200}>
+      {/* <AnimationEffect animationType="slideUp" delay={200}> */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             {/* Filters */}
@@ -382,7 +382,7 @@ export default function AllProjects() {
             )}
           </div>
         </section>
-      </AnimationEffect>
+      {/* </AnimationEffect> */}
 
       <Footer />
     </div>

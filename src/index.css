@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -418,5 +417,44 @@
   .gpu-accelerated {
     transform: translateZ(0);
     will-change: transform;
+  }
+}
+
+@media (max-width: 1023px) {
+  [dir="rtl"] body, [dir="rtl"] html, [dir="rtl"] #root {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  [dir="rtl"] .lg\:hidden {
+    display: flex !important;
+    align-items: center !important;
+  }
+  [dir="rtl"] .lg\:hidden button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 2rem !important;
+    color: #1F75FE !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  [dir="rtl"] .lg\:hidden svg {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    color: #1F75FE !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta-buttons-row {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  .hero-main-image {
+    display: block !important;
+    margin-bottom: 1.5rem !important;
+    order: -1 !important;
   }
 }
