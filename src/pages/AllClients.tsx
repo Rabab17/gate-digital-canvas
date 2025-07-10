@@ -55,7 +55,7 @@ export default function AllClients() {
       <AnimationEffect animationType="fadeIn" delay={100}>
         <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center ">
               <h1 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
                 language === 'ar' ? 'font-arabic' : ''
               }`}>
@@ -78,24 +78,25 @@ export default function AllClients() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  className={`px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${
-                    language === 'ar' ? 'font-arabic' : ''
-                  } ${
-                    selectedCategory === category.id
-                      ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
-                      : 'hover:bg-primary/10'
-                  }`}
-                >
-                  {category.name}
-                </Button>
-              ))}
-            </div>
+           <div className={`flex flex-wrap justify-center gap-4 mb-12 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+  {(language === 'ar' ? [...categories].reverse() : categories).map((category) => (
+    <Button
+      key={category.id}
+      onClick={() => setSelectedCategory(category.id)}
+      variant={selectedCategory === category.id ? "default" : "outline"}
+      className={`px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${
+        language === 'ar' ? 'font-arabic' : ''
+      } ${
+        selectedCategory === category.id
+          ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
+          : 'hover:bg-primary/10'
+      }`}
+    >
+      {category.name}
+    </Button>
+  ))}
+</div>
+
 
             {/* Clients Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -39,11 +39,6 @@ const customStyles = `
     unicode-bidi: embed !important;
   }
   
-  .arabic-feature-item {
-    flex-direction: row-reverse !important;
-    justify-content: flex-start !important;
-  }
-  
   .arabic-button {
     font-family: 'Tajawal', 'Segoe UI', sans-serif !important;
     letter-spacing: 0 !important;
@@ -60,7 +55,6 @@ const customStyles = `
   }
   
   .service-card:hover {
-    /* Removed hover effect */
     transform: translateY(0px); /* Reset transform on hover */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* Keep original shadow or none */
   }
@@ -74,8 +68,6 @@ const customStyles = `
     align-items: center;
     justify-content: center;
   }
-  /* Removed group-hover:scale-110 from service-icon-container */
-  /* Removed group-hover:text-accent from service-icon-container's child div */
 
   .service-title {
     font-size: 1.125rem;
@@ -90,19 +82,54 @@ const customStyles = `
     flex-grow: 1;
   }
   
-  .service-feature {
-    font-size: 0.8125rem;
-    margin-bottom: 0.25rem;
+  /* --- MODIFIED CSS FOR FEATURES LIST to always have dot on the left --- */
+  .service-features-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    margin-bottom: 1rem; /* Space below the features list */
   }
-  
+
+  .service-feature-item {
+    display: flex;
+    align-items: flex-start; /* Align dot and text at the top */
+    margin-bottom: 0.5rem; /* Space between each feature item */
+    font-size: 0.875rem; /* Slightly larger font for readability */
+    line-height: 1.4; /* Improve line spacing */
+    /* By default, flex-direction is row (left to right) */
+  }
+
   .feature-dot {
-    width: 0.375rem;
-    height: 0.375rem;
-    border-radius: 9999px;
-    flex-shrink: 0;
-    margin-top: 0.4rem;
+    width: 0.45rem; /* Slightly larger dot */
+    height: 0.45rem; /* Slightly larger dot */
+    border-radius: 9999px; /* Make it perfectly round */
+    flex-shrink: 0; /* Prevent the dot from shrinking */
+    margin-top: 0.35rem; /* Adjust to align with the text vertically */
+    margin-right: 0.75rem; /* Space after the dot for LTR */
   }
-  
+
+  /* Specific styling for Arabic (RTL) feature items */
+  .service-feature-item[dir="rtl"] {
+    /* Keep flex-direction: row, so dot is visually on the left */
+    /* This will align the entire item (dot + text) to the right within the card */
+    justify-content: flex-end; 
+  }
+
+  .service-feature-item[dir="rtl"] .feature-dot {
+      margin-left: 0.75rem; /* Space after the dot for RTL */
+      margin-right: 0; /* No right margin in RTL for the dot */
+  }
+
+  .service-feature-text {
+    flex-grow: 1; /* Allow text to take up remaining space */
+    text-align: left; /* Default for LTR */
+  }
+
+  .service-feature-item[dir="rtl"] .service-feature-text {
+    text-align: right; /* Align text to the right for RTL */
+  }
+  /* --- END MODIFIED CSS --- */
+
   .filter-button {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
@@ -144,8 +171,6 @@ const customStyles = `
 export default function AllServices() {
   const { language, t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('all');
-
-  // No dark mode state or toggle function, using system/Tailwind defaults
 
   const categories = [
     {
@@ -386,37 +411,38 @@ export default function AllServices() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="">
         <div className="container mx-auto px-4">
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 filter-container">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                variant={selectedCategory === category.id ? "default" : "outline"}
-                className={`filter-button px-6 py-3 rounded-full transition-all duration-300 ${
-                  language === 'ar' ? 'arabic-button' : ''
-                } ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
-                    : '' // Removed hover:bg-primary/10
-                }`}
-              >
-                {category.name}
-              </Button>
-            ))}
-          </div>
+         <div className="flex flex-wrap justify-center gap-4 mb-12 filter-container">
+  {(language === 'ar' ? [...categories].reverse() : categories).map((category) => (
+    <Button
+      key={category.id}
+      onClick={() => setSelectedCategory(category.id)}
+      variant={selectedCategory === category.id ? "default" : "outline"}
+      className={`filter-button px-6 py-3 rounded-full transition-all duration-300 ${
+        language === 'ar' ? 'arabic-button' : ''
+      } ${
+        selectedCategory === category.id
+          ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
+          : ''
+      }`}
+    >
+      {category.name}
+    </Button>
+  ))}
+</div>
+
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 service-grid">
             {filteredServices.map((service, index) => (
               <div
                 key={`${service.title}-${selectedCategory}`}
-                className="service-card bg-white dark:bg-gray-800 shadow-lg" // Removed hover:shadow-xl
+                className="service-card bg-white dark:bg-gray-800 shadow-lg"
               >
-                <div className="service-icon-container bg-gradient-to-r from-primary/10 to-accent/10"> {/* Removed group-hover:scale-110 */}
-                  <div className="text-primary"> {/* Removed group-hover:text-accent */}
+                <div className="service-icon-container bg-gradient-to-r from-primary/10 to-accent/10">
+                  <div className="text-primary">
                     {service.icon}
                   </div>
                 </div>
@@ -425,28 +451,33 @@ export default function AllServices() {
                   {service.title}
                 </h3>
 
-                {/* Adjusted text color for better readability in both modes */}
                 <p className={`service-description text-gray-700 dark:text-gray-300 ${
                   language === 'ar' ? 'font-arabic text-right leading-relaxed' : ''
                 }`}>
                   {service.description}
                 </p>
 
-                <div className="space-y-2 mb-6">
+                {/* MODIFIED FEATURES LIST STRUCTURE */}
+                <div className="service-features-list">
                   {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className={`flex items-start ${language === 'ar' ? 'arabic-feature-item' : ''}`}>
-                      <div className={`feature-dot bg-gradient-to-r from-primary to-accent ${
-                        language === 'ar' ? 'ml-3' : 'mr-3'
-                      }`}></div>
-                      {/* Adjusted text color for better readability in both modes */}
-                      <span className={`service-feature text-gray-700 dark:text-gray-300 ${
-                        language === 'ar' ? 'font-arabic text-right' : ''
-                      }`}>
+                    <div
+                      key={featureIndex}
+                      className="service-feature-item"
+                      dir={language === 'ar' ? 'rtl' : 'ltr'} // Set dir attribute for CSS targeting
+                    >
+                      <div
+                        className={`feature-dot bg-gradient-to-r from-primary to-accent`}
+                      ></div>
+
+                      <span
+                        className={`service-feature-text text-gray-700 dark:text-gray-300 ${language === 'ar' ? 'font-arabic' : ''}`}
+                      >
                         {feature}
                       </span>
                     </div>
                   ))}
                 </div>
+                {/* END MODIFIED FEATURES LIST STRUCTURE */}
 
                 <Link to="/ContactUs">
                   <Button

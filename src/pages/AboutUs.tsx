@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import AnimationEffect from "@/components/AnimationEffect";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Twitter, User } from "lucide-react"; // Import User icon
+import AboutSection from "@/components/AboutSection";
 
 export default function AboutUs() {
   const { t, language } = useLanguage();
@@ -125,16 +126,16 @@ export default function AboutUs() {
       <Header />
 
       <AnimationEffect animationType="fadeIn" delay={100}>
-        <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <section className="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800"> {/* Adjusted padding */}
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h1 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
+            <div className="text-center mb-10"> {/* Adjusted margin-bottom */}
+              <h1 className={`text-4xl md:text-5xl font-bold  bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
                 language === 'ar' ? 'font-arabic' : ''
               }`}>
                 {t('about.title')}
               </h1>
               <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto ${
-                language === 'ar' ? 'font-arabic text-right' : ''
+                language === 'ar' ? 'font-arabic' : '' // Removed text-right for centering
               }`}>
                 {language === 'ar'
                   ? 'تعرف على قصتنا ورؤيتنا وفريقنا المتميز الذي يجعل التحول الرقمي ممكنًا.'
@@ -146,123 +147,7 @@ export default function AboutUs() {
         </section>
       </AnimationEffect>
 
-      <AnimationEffect animationType="slideUp" delay={200}>
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-              <div className={language === 'ar' ? 'text-right' : ''}>
-                <h2 className={`text-3xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-                  {t('about.vision.title')}
-                </h2>
-                <p className={`text-gray-600 dark:text-gray-300 mb-6 leading-relaxed ${
-                  language === 'ar' ? 'font-arabic' : ''
-                }`}>
-                  {t('about.vision.description')}
-                </p>
-
-                <h2 className={`text-3xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-                  {t('about.mission.title')}
-                </h2>
-                <p className={`text-gray-600 dark:text-gray-300 leading-relaxed ${
-                  language === 'ar' ? 'font-arabic' : ''
-                }`}>
-                  {t('about.mission.description')}
-                </p>
-                <p className={`text-3xl font-bold mb-6 text-primary ${language === 'ar' ? 'font-arabic' : ''}`}>
-                  {t('about.values.title')}
-                </p>
-              <ul className="mb-8 space-y-2">
-  {/* التميز / Excellence */}
-  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
-    {language === 'ar' ? (
-      <>
-        <span className="text-right leading-relaxed">
-          {t('about.values.excellence')}
-        </span>
-        <span className="text-primary mr-2">✓</span>
-      </>
-    ) : (
-      <>
-        <span className="text-primary mr-2">✓</span>
-        <span>
-          {t('about.values.excellence')}
-        </span>
-      </>
-    )}
-  </li>
-
-  {/* الابتكار / Innovation */}
-  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
-    {language === 'ar' ? (
-      <>
-        <span className="text-right leading-relaxed">
-          {t('about.values.innovation')}
-        </span>
-        <span className="text-primary mr-2">✓</span>
-      </>
-    ) : (
-      <>
-        <span className="text-primary mr-2">✓</span>
-        <span>
-          {t('about.values.innovation')}
-        </span>
-      </>
-    )}
-  </li>
-
-  {/* النزاهة / Integrity */}
-  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
-    {language === 'ar' ? (
-      <>
-        <span className="text-right leading-relaxed">
-          {t('about.values.integrity')}
-        </span>
-        <span className="text-primary mr-2">✓</span>
-      </>
-    ) : (
-      <>
-        <span className="text-primary mr-2">✓</span>
-        <span>
-          {t('about.values.integrity')}
-        </span>
-      </>
-    )}
-  </li>
-
-  {/* التعاون / Collaboration */}
-  <li className={`flex items-center ${language === 'ar' ? 'justify-end font-arabic' : ''}`}>
-    {language === 'ar' ? (
-      <>
-        <span className="text-right leading-relaxed">
-          {t('about.values.collaboration')}
-        </span>
-        <span className="text-primary mr-2">✓</span>
-      </>
-    ) : (
-      <>
-        <span className="text-primary mr-2">✓</span>
-        <span>
-          {t('about.values.collaboration')}
-        </span>
-      </>
-    )}
-  </li>
-</ul>
-              </div>
-
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
-                  alt="Our Team"
-                  className="rounded-2xl shadow-2xl w-full h-96 object-cover"
-                />
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-                <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimationEffect>
+     <AboutSection/>
 
       <AnimationEffect animationType="stagger" delay={300}>
         <section className="py-16 bg-gray-50 dark:bg-gray-900">
@@ -271,7 +156,7 @@ export default function AboutUs() {
               {t('about.values.title')}
             </h2>
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ${language === 'ar' ? 'justify-end items-end text-right' : 'justify-center text-center'}`}
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center text-center`} // Centered for all languages
               dir={language === 'ar' ? 'rtl' : 'ltr'}
             >
               {[
@@ -282,13 +167,13 @@ export default function AboutUs() {
               ].map((value, index) => (
                 <div
                   key={index}
-                  className={`animate-stagger bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 ${language === 'ar' ? 'text-right' : 'text-center'}`}
+                  className={`animate-stagger bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 text-center`} // Centered for all languages
                 >
-                  <div className="text-4xl mb-4">{value.icon}</div>
+                  <div className="text-4xl mb-4 flex justify-center">{value.icon}</div> {/* Centered icon */}
                   <h3 className={`text-xl font-bold mb-3 ${language === 'ar' ? 'font-arabic' : ''}`}>
                     {value.title}
                   </h3>
-                  <p className={`text-gray-600 dark:text-gray-300 ${language === 'ar' ? 'font-arabic text-right' : ''}`}>
+                  <p className={`text-gray-600 dark:text-gray-300 ${language === 'ar' ? 'font-arabic' : ''}`}> {/* Removed text-right */}
                     {value.description}
                   </p>
                 </div>
@@ -306,7 +191,7 @@ export default function AboutUs() {
                 {language === 'ar' ? 'فريقنا الإبداعي' : 'Our Creative Team'}
               </h2>
               <p className={`text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto ${
-                language === 'ar' ? 'font-arabic text-right' : ''
+                language === 'ar' ? 'font-arabic' : '' // Removed text-right for centering
               }`}>
                 {language === 'ar'
                   ? 'تعرف على الخبراء الذين يقفون وراء نجاح مشاريعنا.'
@@ -315,22 +200,22 @@ export default function AboutUs() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center"> {/* Changed to lg:grid-cols-3 for 3 per row */}
               {teamMembers.map((member, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group w-full max-w-sm" // Added w-full max-w-sm for better responsiveness
                 >
                   <div className="relative mb-6">
-                    {/* Placeholder for team member image */}
-                    <div className="w-24 h-24 rounded-full mx-auto bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 text-lg">
+                    {/* Updated Placeholder for team member image */}
+                    <div className="w-24 h-24 rounded-full mx-auto bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary dark:text-primary-foreground text-3xl overflow-hidden">
                       {/* You can add initials or a generic icon here */}
-                      {member.name.charAt(0)}
-                    </div> 
+                      <User className="w-12 h-12" /> {/* Using Lucide React User icon */}
+                    </div>
                     <div className="absolute inset-0 w-24 h-24 rounded-full mx-auto bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
-                  <div className={`text-center ${language === 'ar' ? 'text-right' : ''}`}>
+                  <div className={`text-center`}> {/* Centered text for team members */}
                     <h3 className={`text-xl font-bold mb-2 ${language === 'ar' ? 'font-arabic' : ''}`}>
                       {member.name}
                     </h3>

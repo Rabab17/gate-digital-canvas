@@ -1,4 +1,3 @@
-
 import { useState, FormEvent } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
@@ -12,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 export default function ContactUs() {
   const { language, t } = useLanguage();
   const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -20,6 +20,7 @@ export default function ContactUs() {
     address: "",
     message: "",
   });
+
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,22 +70,20 @@ export default function ContactUs() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitted(false);
-    
+
     if (validateForm()) {
       setIsLoading(true);
-      
-      // Simulate API call
+
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       setIsLoading(false);
       setIsSubmitted(true);
-      
-      // Show success toast
+
       toast({
-        title: language === 'ar' ? 'تم الإرسال بنجاح' : 'Success',
+        title: language === "ar" ? "تم الإرسال بنجاح" : "Success",
         description: t("contactForm.submissionSuccess"),
       });
-      
+
       setFormData({
         fullName: "",
         companyName: "",
@@ -93,13 +92,15 @@ export default function ContactUs() {
         address: "",
         message: "",
       });
-      
+
       console.log("Form submitted:", formData);
     } else {
-      // Show error toast
       toast({
-        title: language === 'ar' ? 'خطأ في النموذج' : 'Form Error',
-        description: language === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة' : 'Please fill in all required fields',
+        title: language === "ar" ? "خطأ في النموذج" : "Form Error",
+        description:
+          language === "ar"
+            ? "يرجى ملء جميع الحقول المطلوبة"
+            : "Please fill in all required fields",
         variant: "destructive",
       });
     }
@@ -109,15 +110,15 @@ export default function ContactUs() {
     const baseClasses = `mt-2 block w-full rounded-xl border-2 px-4 py-3 transition-all duration-300 ease-in-out ${
       language === "ar" ? "font-medium text-right" : ""
     }`;
-    
+
     if (hasError) {
       return `${baseClasses} border-red-400 bg-red-50 dark:bg-red-900/20 dark:border-red-500 focus:border-red-500 focus:ring-red-500/20 focus:ring-4`;
     }
-    
+
     if (focusedField === fieldName) {
       return `${baseClasses} border-primary bg-blue-50 dark:bg-blue-900/20 dark:border-primary focus:border-primary focus:ring-primary/20 focus:ring-4 shadow-lg transform scale-[1.02]`;
     }
-    
+
     return `${baseClasses} border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 focus:border-primary focus:ring-primary/20 focus:ring-4 hover:shadow-md`;
   };
 
@@ -127,21 +128,20 @@ export default function ContactUs() {
 
       {/* Hero Section */}
       <section
-        className={`pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden ${
+        className={`pt-32 pb-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden ${
           isRTL ? "text-right" : "text-left"
         }`}
         dir={isRTL ? "rtl" : "ltr"}
       >
-        {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -top-20 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center animate-fade-in">
             <h1
-              className={`text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-blue-600 to-accent bg-clip-text text-transparent leading-tight ${
+              className={`text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-blue-600 to-accent bg-clip-text text-transparent leading-tight mb-2 ${
                 language === "ar" ? "font-arabic" : ""
               }`}
             >
@@ -159,29 +159,30 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 relative">
+      <section className="py-10 relative">
         <div className="container mx-auto px-4 max-w-3xl">
           <div
             className={`bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50 animate-fade-in border border-gray-100 dark:border-gray-700 ${
               isRTL ? "text-right" : "text-left"
             }`}
             dir={isRTL ? "rtl" : "ltr"}
-            style={{ animationDelay: '0.2s' }}
+            style={{ animationDelay: "0.2s" }}
           >
             <div className="text-center mb-8">
-              <h2 className={`text-3xl font-bold text-gray-900 dark:text-white mb-4 ${language === "ar" ? "font-arabic" : ""}`}>
-                {language === 'ar' ? 'أرسل لنا رسالة' : 'Send us a message'}
+              <h2
+                className={`text-3xl font-bold text-gray-900 dark:text-white mb-4 ${
+                  language === "ar" ? "font-arabic" : ""
+                }`}
+              >
+                {language === "ar" ? "أرسل لنا رسالة" : "Send us a message"}
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Full Name */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <Label
-                  htmlFor="fullName"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="fullName" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.fullName")} <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -190,24 +191,19 @@ export default function ContactUs() {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('fullName')}
+                  onFocus={() => handleFocus("fullName")}
                   onBlur={handleBlur}
-                  className={getFieldClasses('fullName', !!formErrors.fullName)}
+                  className={getFieldClasses("fullName", !!formErrors.fullName)}
                   placeholder={t("contactForm.fullName")}
                 />
                 {formErrors.fullName && (
-                  <p className={`text-red-500 text-sm mt-2 animate-fade-in ${language === "ar" ? "font-arabic" : ""}`}>
-                    {formErrors.fullName}
-                  </p>
+                  <p className="text-red-500 text-sm mt-2">{formErrors.fullName}</p>
                 )}
               </div>
 
               {/* Company Name */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <Label
-                  htmlFor="companyName"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="companyName" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.companyName")}
                 </Label>
                 <Input
@@ -216,19 +212,16 @@ export default function ContactUs() {
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('companyName')}
+                  onFocus={() => handleFocus("companyName")}
                   onBlur={handleBlur}
-                  className={getFieldClasses('companyName', !!formErrors.companyName)}
+                  className={getFieldClasses("companyName", !!formErrors.companyName)}
                   placeholder={t("contactForm.companyName")}
                 />
               </div>
 
               {/* Phone Number */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                <Label
-                  htmlFor="phoneNumber"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="phoneNumber" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.phoneNumber")} <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -237,24 +230,19 @@ export default function ContactUs() {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('phoneNumber')}
+                  onFocus={() => handleFocus("phoneNumber")}
                   onBlur={handleBlur}
-                  className={getFieldClasses('phoneNumber', !!formErrors.phoneNumber)}
+                  className={getFieldClasses("phoneNumber", !!formErrors.phoneNumber)}
                   placeholder={t("contactForm.phoneNumber")}
                 />
                 {formErrors.phoneNumber && (
-                  <p className={`text-red-500 text-sm mt-2 animate-fade-in ${language === "ar" ? "font-arabic" : ""}`}>
-                    {formErrors.phoneNumber}
-                  </p>
+                  <p className="text-red-500 text-sm mt-2">{formErrors.phoneNumber}</p>
                 )}
               </div>
 
               {/* Email */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                <Label
-                  htmlFor="email"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="email" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.email")}
                 </Label>
                 <Input
@@ -263,19 +251,16 @@ export default function ContactUs() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('email')}
+                  onFocus={() => handleFocus("email")}
                   onBlur={handleBlur}
-                  className={getFieldClasses('email', !!formErrors.email)}
+                  className={getFieldClasses("email", !!formErrors.email)}
                   placeholder={t("contactForm.email")}
                 />
               </div>
 
               {/* Address */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.7s' }}>
-                <Label
-                  htmlFor="address"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="address" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.address")}
                 </Label>
                 <Input
@@ -284,19 +269,16 @@ export default function ContactUs() {
                   name="address"
                   value={formData.address}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('address')}
+                  onFocus={() => handleFocus("address")}
                   onBlur={handleBlur}
-                  className={getFieldClasses('address', !!formErrors.address)}
+                  className={getFieldClasses("address", !!formErrors.address)}
                   placeholder={t("contactForm.address")}
                 />
               </div>
 
               {/* Message */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.8s' }}>
-                <Label
-                  htmlFor="message"
-                  className={`text-lg font-semibold text-gray-700 dark:text-gray-200 ${language === "ar" ? "font-arabic" : ""}`}
-                >
+              <div>
+                <Label htmlFor="message" className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                   {t("contactForm.message")} <span className="text-red-500">*</span>
                 </Label>
                 <Textarea
@@ -304,21 +286,19 @@ export default function ContactUs() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  onFocus={() => handleFocus('message')}
+                  onFocus={() => handleFocus("message")}
                   onBlur={handleBlur}
                   rows={6}
-                  className={getFieldClasses('message', !!formErrors.message)}
+                  className={getFieldClasses("message", !!formErrors.message)}
                   placeholder={t("contactForm.message")}
                 />
                 {formErrors.message && (
-                  <p className={`text-red-500 text-sm mt-2 animate-fade-in ${language === "ar" ? "font-arabic" : ""}`}>
-                    {formErrors.message}
-                  </p>
+                  <p className="text-red-500 text-sm mt-2">{formErrors.message}</p>
                 )}
               </div>
 
               {/* Submit Button */}
-              <div className="animate-fade-in" style={{ animationDelay: '0.9s' }}>
+              <div>
                 <Button
                   type="submit"
                   className={`w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl shadow-lg ${
@@ -328,10 +308,7 @@ export default function ContactUs() {
                 >
                   {isLoading ? (
                     <div className="flex items-center justify-center gap-3">
-                      <svg
-                        className="animate-spin h-6 w-6 text-white"
-                        viewBox="0 0 24 24"
-                      >
+                      <svg className="animate-spin h-6 w-6 text-white" viewBox="0 0 24 24">
                         <circle
                           className="opacity-25"
                           cx="12"
@@ -346,7 +323,7 @@ export default function ContactUs() {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         ></path>
                       </svg>
-                      <span>{language === 'ar' ? 'جاري الإرسال...' : 'Sending...'}</span>
+                      <span>{language === "ar" ? "جاري الإرسال..." : "Sending..."}</span>
                     </div>
                   ) : (
                     <span>{t("contactForm.submitRequest")}</span>
