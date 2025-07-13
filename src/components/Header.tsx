@@ -112,7 +112,7 @@ export default function Header() {
             <img
               src={isDarkMode ? logoDark : logoLight}
               alt="Logo"
-              className="w-10 h-10 object-contain"
+              className="w-14 h-14 object-contain"
             />
           </Link>
         </div>
@@ -128,7 +128,7 @@ export default function Header() {
                       e.preventDefault();
                       handleNavClick(item.href, true);
                     }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group ${
+                    className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 relative group ${
                       location.pathname === item.href ||
                       (item.isExternal && location.hash === item.href.substring(1))
                         ? "text-primary font-bold underline bg-primary/10"
@@ -143,7 +143,7 @@ export default function Header() {
                   <Link
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group ${
+                    className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 relative group ${
                       location.pathname === item.href
                         ? "text-primary font-bold underline bg-primary/10"
                         : "text-primary"
@@ -170,7 +170,7 @@ export default function Header() {
             }}
             className={`${
               !scrolled ? "bg-primary hover:bg-primary/90" : "bg-gradient-to-r from-primary to-accent"
-            } text-white px-6 py-2 rounded-full font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
+            } text-white px-6 py-2 rounded-full font-bold hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
           >
             {t("Start Project")}
           </a>
@@ -204,7 +204,7 @@ export default function Header() {
                     e.preventDefault();
                     handleNavClick(item.href, true);
                   }}
-                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  className={`block px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
                     location.pathname === item.href ||
                     (item.isExternal && location.hash === item.href.substring(1))
                       ? "text-primary font-bold underline bg-primary/10"
@@ -224,7 +224,7 @@ export default function Header() {
                 <Link
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  className={`block px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
                     location.pathname === item.href
                       ? "text-primary font-bold underline bg-primary/10"
                       : "text-primary"
@@ -256,7 +256,7 @@ export default function Header() {
               }}
               className={`inline-block w-full text-center ${
                 !scrolled ? "bg-primary hover:bg-primary/90" : "bg-gradient-to-r from-primary to-accent"
-              } text-white px-6 py-3 rounded-full font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
+              } text-white px-6 py-3 rounded-full font-bold hover:scale-105 hover:shadow-lg transition-all duration-300 whitespace-nowrap`}
             >
               {t("Start Project")}
             </a>

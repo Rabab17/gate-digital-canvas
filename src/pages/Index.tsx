@@ -42,7 +42,7 @@ const Index = () => {
     <>
       <LoadingScreen />
       <MouseTracker />
-      <div className="bg-white dark:bg-gray-950 min-h-screen transition-all duration-300">
+      <div className="bg-white dark:bg-gray-950 min-h-screen transition-all duration-300 ">
         <Header />
         <HeroSection />
         

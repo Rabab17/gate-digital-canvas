@@ -23,7 +23,8 @@ export default function ContactSection() {
   <h4 className="font-bold text-lg mb-2">{t("contact.locations")}</h4>
   <div className="space-y-4">
     {[
-      { title: t("contact.egypt"), desc: t("contact.fayoumCairo") },
+      // { title: t("contact.egypt"), desc: t("contact.fayoumCairo") },
+            { title: t("contact.egypt"), desc: t("contact.cairoAddress")},
       { title: t("contact.saudi"), desc: t("contact.riyadh") },
       { title: t("contact.uae"), desc: t("contact.dubai") },
     ].map((loc, i) => (

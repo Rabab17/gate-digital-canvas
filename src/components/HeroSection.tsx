@@ -18,15 +18,23 @@ export default function HeroSection() {
     }
   };
 
-  const downloadPortfolio = () => {
-    const link = document.createElement("a");
-    link.href = "/E-Business-Gate-Portfolio.pdf"; // ✅ رابط فعلي داخل public
-    link.download = "E-Business-Gate-Portfolio.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    console.log("Portfolio download initiated");
-  };
+ const downloadPortfolio = () => {
+  let fileId = "";
+
+  if (language === "ar") {
+    fileId = "1xO_DZ9RsEt4gcC0puF2tCdIUDrriz5za"; // رابط العربي
+  } else {
+    fileId = "1KDOeslKKn-Gl77GYk-9GTQS--1V5U4nf"; // رابط الإنجليزي
+  }
+
+  const link = document.createElement("a");
+  link.href = `https://drive.google.com/uc?export=download&id=${fileId}`;
+  link.download = "E-Business-Gate-Portfolio.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  console.log("Portfolio download initiated for language:", language);
+};
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -67,7 +75,7 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 z-20 text-center text-white">
-        <div className="slide-line mb-8"></div>
+        <div className=" mb-8"></div>
 
         <div className="mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
           <span className="inline-block bg-gradient-to-r from-accent to-yellow-400 text-gray-900 px-6 py-2 rounded-full text-sm font-bold tracking-wide">
@@ -143,7 +151,7 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up pb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up pb-12"
           style={{ animationDelay: "1.1s" }}
         >
           {[

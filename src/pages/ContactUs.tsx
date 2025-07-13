@@ -128,7 +128,7 @@ export default function ContactUs() {
 
       {/* Hero Section */}
       <section
-        className={`pt-32 pb-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden ${
+        className={`pt-36 pb-10 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden ${
           isRTL ? "text-right" : "text-left"
         }`}
         dir={isRTL ? "rtl" : "ltr"}
@@ -159,7 +159,7 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-10 relative">
+      <section className="py-6 relative">
         <div className="container mx-auto px-4 max-w-3xl">
           <div
             className={`bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50 animate-fade-in border border-gray-100 dark:border-gray-700 ${

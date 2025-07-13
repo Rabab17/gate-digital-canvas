@@ -271,7 +271,7 @@ export default function AllProjects() {
       <Header />
 
       <AnimationEffect animationType="fadeIn" delay={100}>
-        <section className="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <section className="pt-36 pb-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
           <div className="container mx-auto px-4">
             <div className="text-center ">
               <h1 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
@@ -292,7 +292,7 @@ export default function AllProjects() {
         </section>
       </AnimationEffect>
 
-      <section className="py-16"> {/* Added py-16 for vertical padding */}
+      <section className="py-6"> {/* Added py-16 for vertical padding */}
         <div className="container mx-auto px-4">
           {/* Filters */}
           <div className={`mb-12 space-y-6 ${language === 'ar' ? 'text-right' : ''}`}>

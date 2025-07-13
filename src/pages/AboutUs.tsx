@@ -126,7 +126,7 @@ export default function AboutUs() {
       <Header />
 
       <AnimationEffect animationType="fadeIn" delay={100}>
-        <section className="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800"> {/* Adjusted padding */}
+        <section className="pt-36 pb-3 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800"> {/* Adjusted padding */}
           <div className="container mx-auto px-4">
             <div className="text-center mb-10"> {/* Adjusted margin-bottom */}
               <h1 className={`text-4xl md:text-5xl font-bold  bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent ${
