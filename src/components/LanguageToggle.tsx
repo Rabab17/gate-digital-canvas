@@ -19,6 +19,7 @@ export function LanguageToggle() {
       className="flex items-center gap-2 p-3 md:p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 text-base md:text-lg"
       aria-label={`Switch language to ${nextLangText}`}
     >
+ 
       <img
         src={currentFlagSrc}
         alt={currentFlagAlt}

@@ -103,7 +103,7 @@ export default function AllProjects() {
   const serviceTypes = [
     { id: 'all', name: language === 'ar' ? 'جميع الخدمات' : 'All Services' },
     { id: 'digital_marketing', name: language === 'ar' ? 'التسويق الرقمي' : 'Digital Marketing' },
-    { id: 'web_development', name: language === 'ar' ? 'تطوير الويب' : 'Web Development' }, 
+    // { id: 'web_development', name: language === 'ar' ? 'تطوير الويب' : 'Web Development' }, 
     { id: 'branding', name: language === 'ar' ? 'هوية بصرية' : 'Branding' },
     { id: 'graphic_design', name: language === 'ar' ? 'التصميم الجرافيكي' : 'Graphic Design' }
   ];
@@ -143,7 +143,10 @@ export default function AllProjects() {
     {
       id: 2,
       title: "Abu Aya Grills - Social Media",
-      description: language === 'ar' ? 'تطوير هوية بصرية كاملة وإدارة حملات وسائل التواصل الاجتماعي لمطعم أبو آية جريلز.' : 'Full brand identity development and social media campaign management for Abu Aya Grills restaurant.',
+     description: language === 'ar' 
+  ? 'تطوير هوية بصرية كاملة واحترافية وإدارة حملات وسائل التواصل الاجتماعي لمطعم أبو آية جريلز.' 
+  : 'Full and professional brand identity development and social media campaign management for Abu Aya Grills restaurant.'
+,
       image: "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/fd0db0226481611.682f10c120687.jpg",
       serviceType: "branding",
       industry: "food_beverage",
@@ -212,7 +215,10 @@ export default function AllProjects() {
     {
       id: 5,
       title: "Intense Perfume House - Social Media",
-      description: language === 'ar' ? 'إنشاء هوية بصرية مميزة وإدارة محتوى وسائل التواصل الاجتماعي لـ Intense Perfume House.' : 'Creating a distinctive brand identity and managing social media content for Intense Perfume House.',
+     description: language === 'ar' 
+  ? 'إنشاء هوية بصرية مميزة وإبداعية وإدارة محتوى وسائل التواصل الاجتماعي لـ Intense Perfume House.' 
+  : 'Creating a distinctive and creative brand identity and managing social media content for Intense Perfume House.',
+
       image: "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/64ef35225762787.682328dd627be.jpg",
       serviceType: "branding",
       industry: "beauty",

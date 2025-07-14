@@ -48,6 +48,7 @@ import logoStarTex from "../assets/Startex.png";
 // ✨ استيراد شعارات العطور ومستحضرات التجميل الجديدة هنا
 import logoBaitAlOud from "../assets/بيت العطور.png"; // تأكد من وجود هذا الملف
 import logoFlourBeauty from "../assets/Intense logo.png"; // تأكد من وجود هذا الملف
+import logohamelelmask from "../assets/لوجو حامل المسك.png";
 // import logoAtrAlAms from "../assets/atr-al-ams-logo.png"; // تأكد من وجود هذا الملف
 
 export default function AllClients() {
@@ -68,13 +69,13 @@ export default function AllClients() {
   const clients = [
     // Existing Clients
     { name: "الأمراء للسجاد", logo: logo1, category: "carpets", description: language === "ar" ? "شركة رائدة في صناعة السجاد والمفروشات." : "Leading company in carpets and furnishings." },
-    { name: "الحرمين", logo: logo2, category: "restaurants", description: language === "ar" ? "مطاعم متخصصة في المأكولات الشرقية." : "Restaurants specializing in oriental cuisine." },
+    
     { name: "روزي كاربت", logo: logo3, category: "carpets", description: language === "ar" ? "علامة تجارية للسجاد الفاخر والتصميمات الحديثة." : "Luxury carpet brand with modern designs." },
     { name: "Hardees", logo: logo4, category: "restaurants", description: language === "ar" ? "سلسلة مطاعم وجبات سريعة عالمية." : "Global fast-food restaurant chain." },
     { name: "Americana", logo: logo5, category: "restaurants", description: language === "ar" ? "مجموعة شركات رائدة في قطاع الأغذية والمشروبات." : "Leading group of companies in the food and beverage sector." },
     { name: "DC Comics", logo: logo6, category: "educational", description: language === "ar" ? "دار نشر قصص مصورة وترفيه." : "Comic book publisher and entertainment." },
     { name: "Masar Logo", logo: logo7, category: "educational", description: language === "ar" ? "منصة تعليمية متطورة لتقديم الدورات والتدريب." : "Advanced educational platform for courses and training." },
-    { name: "ميرميد", logo: logo8, category: "cosmetics", description: language === "ar" ? "منتجات تجميل وعناية بالبشرة." : "Beauty and skincare products." },
+   
 
     // New Medical Clients
     { name: "احمد علاء", logo: logoAhmedAlaa, category: "medical", description: language === "ar" ? "عيادة طبية متخصصة." : "Specialized medical clinic." },
@@ -85,6 +86,7 @@ export default function AllClients() {
     { name: "مركز الحياة", logo: logoHayahCenter, category: "medical", description: language === "ar" ? "مركز طبي شامل." : "Comprehensive medical center." },
 
     // New Electronics & Appliances Clients
+    { name: "الحرمين", logo: logo2, category: "electronics", description: language === "ar" ? "شركة متخصصة في الإلكترونيات." : "Electronics company." },
     { name: "سمارت هوم", logo: logoSmartHome, category: "electronics", description: language === "ar" ? "حلول المنزل الذكي." : "Smart home solutions." },
     { name: "معرض الامل", logo: logoAmalExhibition, category: "electronics", description: language === "ar" ? "معرض للأجهزة الإلكترونية والكهربائية." : "Exhibition for electronics and electrical appliances." },
     { name: "السعودية للتكييف", logo: logoSaudiAC, category: "electronics", description: language === "ar" ? "شركة متخصصة في أنظمة التكييف." : "Company specialized in air conditioning systems." },
@@ -98,6 +100,7 @@ export default function AllClients() {
     { name: "أبو اية", logo: logoAbuAya, category: "restaurants", description: language === "ar" ? "مطعم وجبات سريعة." : "Fast food restaurant." },
 
     // New Fashion & Apparel Clients
+    { name: "ميرميد", logo: logo8, category: "fashion", description: language === "ar" ? "منتجات أزياء وملابس." : "Fashion and apparel products." },
     { name: "زيزينيا", logo: logoZizinia, category: "fashion", description: language === "ar" ? "علامة تجارية للأزياء الراقية." : "High-end fashion brand." },
     { name: "ريفا", logo: logoRiva, category: "fashion", description: language === "ar" ? "متجر أزياء حديث." : "Modern fashion store." },
     { name: "فيرجو", logo: logoVirgo, category: "fashion", description: language === "ar" ? "ملابس أنيقة وعصرية." : "Elegant and modern clothing." },
@@ -116,7 +119,7 @@ export default function AllClients() {
           : "A luxury perfume brand with distinctive scents.",
     },
     {
-      name: "فلور بيوتي",
+      name: "Intense",
       logo: logoFlourBeauty,
       category: "cosmetics",
       description:
@@ -124,15 +127,15 @@ export default function AllClients() {
           ? "منتجات تجميل طبيعية وعناية بالبشرة."
           : "Natural beauty and skincare products.",
     },
-    // {
-    //   name: "عطر الأمس",
-    //   logo: logoAtrAlAms,
-    //   category: "cosmetics",
-    //   description:
-    //     language === "ar"
-    //       ? "عطور كلاسيكية بلمسة عصرية."
-    //       : "Classic perfumes with a modern touch.",
-    // },
+//   
+    {
+  name: "حامل المسك",
+  logo: logohamelelmask, // تأكدي من وجود الصورة
+  category: "cosmetics",
+  description: language === "ar"
+    ? "عطور طبيعية ذات جودة عالية."
+    : "High-quality natural perfumes.",
+},
   ];
 
   const filteredClients =
