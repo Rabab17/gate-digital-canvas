@@ -6,6 +6,7 @@ import AnimationEffect from "@/components/AnimationEffect";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Calendar, Users, Award } from "lucide-react";
 import React from "react"; // تأكد من استيراد React
+import WhatsApp from "@/components/whatSap";
 
 // أنماط CSS المخصصة للنقاط والميزات لضمان تصميم موحد
 const customStyles = `
@@ -489,7 +490,7 @@ export default function AllProjects() {
           )}
         </div>
       </section>
-
+    <WhatsApp  />
       <Footer />
     </div>
   );

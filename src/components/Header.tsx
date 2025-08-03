@@ -128,7 +128,8 @@ export default function Header() {
                       e.preventDefault();
                       handleNavClick(item.href, true);
                     }}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 relative group ${
+                    // تم إضافة text-lg هنا لزيادة حجم الخط
+                    className={`px-4 py-2 rounded-lg text-lg font-bold transition-all duration-300 relative group ${
                       location.pathname === item.href ||
                       (item.isExternal && location.hash === item.href.substring(1))
                         ? "text-primary font-bold underline bg-primary/10"
@@ -143,7 +144,8 @@ export default function Header() {
                   <Link
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 relative group ${
+                    // تم إضافة text-lg هنا لزيادة حجم الخط
+                    className={`px-4 py-2 rounded-lg text-lg font-bold transition-all duration-300 relative group ${
                       location.pathname === item.href
                         ? "text-primary font-bold underline bg-primary/10"
                         : "text-primary"
@@ -204,7 +206,8 @@ export default function Header() {
                     e.preventDefault();
                     handleNavClick(item.href, true);
                   }}
-                  className={`block px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
+                  // تم إضافة text-lg هنا لزيادة حجم الخط في قائمة الجوال
+                  className={`block px-4 py-3 rounded-lg text-lg font-bold transition-all duration-300 ${
                     location.pathname === item.href ||
                     (item.isExternal && location.hash === item.href.substring(1))
                       ? "text-primary font-bold underline bg-primary/10"
@@ -224,7 +227,8 @@ export default function Header() {
                 <Link
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-bold transition-all duration-300 ${
+                  // تم إضافة text-lg هنا لزيادة حجم الخط في قائمة الجوال
+                  className={`block px-4 py-3 rounded-lg text-lg font-bold transition-all duration-300 ${
                     location.pathname === item.href
                       ? "text-primary font-bold underline bg-primary/10"
                       : "text-primary"

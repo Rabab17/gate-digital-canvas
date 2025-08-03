@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -31,7 +30,8 @@ export default function ScrollToTop() {
       {isVisible && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          // ************ تأكد من أن هذا السطر لا يحتوي على "fixed" ************
+          className="p-3 bg-primary text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors"
           aria-label="Scroll to top"
         >
           <svg

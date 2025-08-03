@@ -23,8 +23,8 @@ export default function ContactSection() {
   <h4 className="font-bold text-lg mb-2">{t("contact.locations")}</h4>
   <div className="space-y-4">
     {[
-      // { title: t("contact.egypt"), desc: t("contact.fayoumCairo") },
-            { title: t("contact.egypt"), desc: t("contact.cairoAddress")},
+      { title: t("contact.egypt"), desc: t("contact.cairoAddress")},
+      { title: t("contact.egypt"), desc: t("contact.fayoumCairo") },
       { title: t("contact.saudi"), desc: t("contact.riyadh") },
       { title: t("contact.uae"), desc: t("contact.dubai") },
     ].map((loc, i) => (
@@ -169,18 +169,19 @@ export default function ContactSection() {
         </div>
 
         {/* الخريطة */}
-        <div className="mt-12 h-80 rounded-lg overflow-hidden">
-          <iframe
-            title="Google Map Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.683841430101!2d31.2074709!3d30.0401836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xeb5f916e5fc939b9!2z2YXYs9in2YUg2KfZhNin2YTZiNmE2YrYqSDYp9mE2KrZiNmF2KzZitip!5e0!3m2!1sar!2seg!4v1716989231809!5m2!1sar!2seg"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+    <div className="mt-12 h-80 rounded-lg overflow-hidden">
+  <iframe
+    title="Google Map Location"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.6702342688215!2d31.3532653!3d30.0595229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583dbd4e65b505%3A0xa8989ecfa22a1a25!2z2YXYs9in2YUg2KfZhNmF2KfYsdipINin2YTYqtmK2KfYqNmK2Kkg2YTZhNi52KjYr9mI2YrYqSDZhNmE2KfZhNipINmE2YTYq9mB2KfZhQ!5e0!3m2!1sar!2seg!4v1722166828033!5m2!1sar!2seg"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter, User } from "lucide-react"; // Import User icon
 import AboutSection from "@/components/AboutSection";
+import WhatsApp from "@/components/whatSap";
 
 export default function AboutUs() {
   const { t, language } = useLanguage();
@@ -278,7 +279,7 @@ export default function AboutUs() {
           </div>
         </section>
       </AnimationEffect>
-
+    <WhatsApp  />
       <Footer />
     </div>
   );
