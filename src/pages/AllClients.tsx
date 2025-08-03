@@ -49,7 +49,7 @@ import logoStarTex from "../assets/Startex.png";
 import logoBaitAlOud from "../assets/بيت العطور.png"; // تأكد من وجود هذا الملف
 import logoFlourBeauty from "../assets/Intense logo.png"; // تأكد من وجود هذا الملف
 import logohamelelmask from "../assets/لوجو حامل المسك.png";
-import WhatsApp from "@/components/whatSap";
+import WhatsApp from "@/components/WhatSap";
 // import logoAtrAlAms from "../assets/atr-al-ams-logo.png"; // تأكد من وجود هذا الملف
 
 export default function AllClients() {

@@ -26,7 +26,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import React from "react";
-import WhatsApp from "@/components/whatSap";
+import WhatsApp from "@/components/WhatSap";
 
 // أنماط CSS المخصصة للحفاظ على التصميم والترتيب، مع إزالة الألوان المحددة
 const customStyles = `
