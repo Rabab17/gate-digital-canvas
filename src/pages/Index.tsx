@@ -12,7 +12,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import AnimationEffect from "@/components/AnimationEffect";
 import LoadingScreen from "@/components/LoadingScreen";
 import MouseTracker from "@/components/MouseTracker";
-import WhatsApp from "@/components/whatSap";
+import WhatsApp from "@/components/WhatSap";
 
 const Index = () => {
   const myWhatsappNumber = "201050206655";
