@@ -85,6 +85,19 @@ const translations = {
     'contact.title': 'Get In Touch',
     'contact.subtitle': 'Ready to start your digital transformation?',
     
+    // Articles Section
+    'articles.title': 'Articles & Insights',
+    'articles.subtitle': 'Explore our latest articles on digital marketing, web development, and business growth',
+    'articles.sectionTitle': 'Latest Articles',
+    'articles.sectionSubtitle': 'Stay updated with the latest trends and insights in digital business',
+    'articles.search': 'Search articles...',
+    'articles.readMore': 'Read More',
+    'articles.viewAll': 'View All Articles',
+    'articles.noResults': 'No articles found matching your search',
+    'articles.notFound': 'Article Not Found',
+    'articles.backToArticles': 'Back to Articles',
+    'articles.relatedPosts': 'Related Articles',
+    
     // Footer
     'footer.description': 'Empowering businesses through digital innovation since 2010. We provide comprehensive digital solutions to help your business thrive in the online world.',
     'footer.services': 'Services',
@@ -173,6 +186,19 @@ const translations = {
     // Contact Section
     'contact.title': 'تواصل معنا',
     'contact.subtitle': 'هل أنت مستعد لبدء تحولك الرقمي؟',
+    
+    // Articles Section
+    'articles.title': 'المقالات والرؤى',
+    'articles.subtitle': 'استكشف أحدث مقالاتنا حول التسويق الرقمي وتطوير الويب ونمو الأعمال',
+    'articles.sectionTitle': 'أحدث المقالات',
+    'articles.sectionSubtitle': 'ابق على اطلاع بأحدث الاتجاهات والرؤى في الأعمال الرقمية',
+    'articles.search': 'ابحث عن المقالات...',
+    'articles.readMore': 'اقرأ المزيد',
+    'articles.viewAll': 'عرض جميع المقالات',
+    'articles.noResults': 'لم يتم العثور على مقالات مطابقة لبحثك',
+    'articles.notFound': 'المقالة غير موجودة',
+    'articles.backToArticles': 'العودة للمقالات',
+    'articles.relatedPosts': 'مقالات ذات صلة',
     
     // Footer
     'footer.description': 'تمكين الشركات من خلال الابتكار الرقمي منذ عام 2010. نحن نقدم حلولاً رقمية شاملة لمساعدة أعمالك على الازدهار في العالم الرقمي.',

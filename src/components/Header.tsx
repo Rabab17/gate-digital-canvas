@@ -35,6 +35,7 @@ export default function Header() {
     { label: t('nav.services'), href: "/services", key: 'nav.services' },
     { label: t('nav.portfolio'), href: "/projects", key: 'nav.portfolio' },
     { label: t('nav.clients'), href: "/clients", key: 'nav.clients' },
+    { label: language === 'ar' ? 'مقالات' : 'Articles', href: "/articles", key: 'nav.articles' },
     { label: t('nav.testimonials'), href: "/#testimonials", key: 'nav.testimonials', isExternal: true },
     { label: t('nav.contact'), href: "/#contact", key: 'nav.contact', isExternal: true },
   ];
