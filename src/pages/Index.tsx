@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ClientsSection from "@/components/ClientsSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import ArticlesSection from "@/components/ArticlesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -61,6 +62,10 @@ const Index = () => {
         
         <AnimationEffect animationType="scale" delay={150}>
           <PortfolioSection />
+        </AnimationEffect>
+        
+        <AnimationEffect animationType="slideUp" delay={100}>
+          <ArticlesSection />
         </AnimationEffect>
         
         <AnimationEffect animationType="slideRight" delay={100}>
