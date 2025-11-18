@@ -114,7 +114,7 @@ export default function ArticleDetail() {
       
       <main className="pt-24 pb-16">
         {/* Back Button */}
-        <div className="container mx-auto px-4 mb-8 opacity-0 animate-fade-in">
+        <div className="container mx-auto px-4 mb-8 animate-fade-in">
           <Link to="/articles">
             <Button 
               variant="ghost" 
@@ -128,7 +128,7 @@ export default function ArticleDetail() {
 
         {/* Article Header */}
         <article className="container mx-auto px-4 max-w-4xl">
-          <div className="opacity-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
+          <div className="animate-fade-in" style={{ animationDelay: '100ms' }}>
             {/* Category Badge */}
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-6">
               <Tag className="w-3.5 h-3.5" />
@@ -234,7 +234,7 @@ export default function ArticleDetail() {
           {/* Related Articles - Enhanced Design */}
           {relatedArticles.length > 0 && (
             <div className="mt-16 pt-16 border-t border-border">
-              <div className="mb-8 opacity-0 animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <div className="mb-8 animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <h2 className={`text-2xl md:text-3xl font-bold mb-2 ${
                   language === 'ar' ? 'font-arabic text-right' : ''
                 }`}>
@@ -250,7 +250,7 @@ export default function ArticleDetail() {
                   <Link
                     key={related.id}
                     to={`/articles/${related.slug}`}
-                    className="group block opacity-0 animate-fade-in"
+                    className="group block animate-fade-in"
                     style={{ animationDelay: `${300 + index * 100}ms` }}
                   >
                     <div className="bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/50 h-full flex flex-col">

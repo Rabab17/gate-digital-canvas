@@ -3,37 +3,18 @@ import { Link } from "react-router-dom";
 import { articles } from "@/data/articles";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef, useState } from "react";
 
 export default function ArticlesSection() {
   const { language, t } = useLanguage();
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-  const observerRef = useRef<IntersectionObserver | null>(null);
   
   // Show latest 3 articles
   const latestArticles = articles.slice(0, 3);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleCards(prev => new Set(prev).add(index));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    return () => observerRef.current?.disconnect();
-  }, []);
 
   return (
     <section className="py-20 bg-gradient-to-b from-background via-background to-primary/5" id="articles">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 opacity-0 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in">
           <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold bg-primary/10 text-primary rounded-full">
             {language === 'ar' ? 'المدونة' : 'Blog'}
           </span>
@@ -52,16 +33,9 @@ export default function ArticlesSection() {
           {latestArticles.map((article, index) => (
             <article
               key={article.id}
-              data-index={index}
-              ref={(el) => {
-                if (el && observerRef.current) observerRef.current.observe(el);
-              }}
-              className={`group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/50 flex flex-col h-full ${
-                visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/50 flex flex-col h-full animate-fade-in"
               style={{ 
-                transitionDelay: `${index * 150}ms`,
-                transitionProperty: 'opacity, transform, box-shadow, border-color'
+                animationDelay: `${index * 150}ms`
               }}
             >
               {/* Image with Lazy Loading */}
@@ -130,7 +104,7 @@ export default function ArticlesSection() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '500ms' }}>
+        <div className="text-center animate-fade-in" style={{ animationDelay: '500ms' }}>
           <Link to="/articles">
             <Button 
               size="lg" 

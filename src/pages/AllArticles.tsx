@@ -67,7 +67,7 @@ export default function AllArticles() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE0YzYuNjI3IDAgMTIgNS4zNzMgMTIgMTJzLTUuMzczIDEyLTEyIDEyLTEyLTUuMzczLTEyLTEyIDUuMzczLTEyIDEyLTEyem0wIDIuNWM1LjI0NyAwIDkuNSA0LjI1MyA5LjUgOS41cy00LjI1MyA5LjUtOS41IDkuNS05LjUtNC4yNTMtOS41LTkuNSA0LjI1My05LjUgOS41LTkuNXoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-40"></div>
           
           <div className="container mx-auto px-4 relative">
-            <div className="max-w-4xl mx-auto text-center opacity-0 animate-fade-in">
+            <div className="max-w-4xl mx-auto text-center animate-fade-in">
               <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold bg-primary/10 text-primary rounded-full">
                 {language === 'ar' ? 'مدونتنا' : 'Our Blog'}
               </span>
@@ -157,7 +157,7 @@ export default function AllArticles() {
               {filteredArticles.map((article, index) => (
                 <article
                   key={article.id}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/50 flex flex-col opacity-0 animate-fade-in h-full"
+                  className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 hover:border-primary/50 flex flex-col animate-fade-in h-full"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
                   {/* Image with Lazy Loading */}
@@ -222,7 +222,7 @@ export default function AllArticles() {
 
             {/* No Results */}
             {filteredArticles.length === 0 && (
-              <div className="text-center py-20 opacity-0 animate-fade-in">
+              <div className="text-center py-20 animate-fade-in">
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
                   <Search className="w-10 h-10 text-muted-foreground" />
                 </div>
